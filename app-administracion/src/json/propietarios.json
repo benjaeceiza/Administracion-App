@@ -1,0 +1,66 @@
+[
+    {
+        "nombre": "benjamin",
+        "apellido": "eceiza",
+        "dni": 44480358,
+        "email":"benjaeceiza400@gmail.com",
+        "telefono":2657310116,
+        "id":1
+    },
+    {
+        "nombre": "gonzalo",
+        "apellido": "silvani",
+        "dni": 44480536,
+        "email":"gonzasilvani@gmail.com",
+        "telefono":26571212121,
+        "id":2
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":3
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":4
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":5
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":6
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":7
+    },
+    {
+        "nombre": "cesar",
+        "apellido": "silvani",
+        "dni": 343432432,
+        "email":"cesarsilvani@gmail.com",
+        "telefono":265734346,
+        "id":8
+    }
+]
