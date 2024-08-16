@@ -1,7 +1,10 @@
-import ListadoPropietarios from "./components/ListadoPropietarios"
-import Inicio from "./components/Inicio"
+
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import {BrowserRouter,Route,Routes} from "react-router-dom"
+import Inicio from "./components/Inicio"
+import ListadoPropietarios from "./components/ListadoPropietarios"
+import PropietariosDetail from "./components/PropietariosDetail"
+
 
 function App() {
 
@@ -9,10 +12,11 @@ function App() {
   return (
     <>
     <BrowserRouter>
-     <Navbar/>
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<Inicio/>}/>
-        <Route path="/propietarios" element={<ListadoPropietarios/>}/>
+      <Route path="/" element={<Inicio/>}/>
+      <Route path="/propietarios" element={<ListadoPropietarios/>}/>
+      <Route path="/propietario/:id" element={<PropietariosDetail/>}/>
       </Routes>
     </BrowserRouter>
     </>
