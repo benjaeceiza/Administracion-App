@@ -25,6 +25,18 @@ justify-content: space-around;
   border-radius: 50%;
 }
 
+/* LISTADO DE PROPIETARIOS */
+
+.contenedor-propietarios{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ancho{
+  width: 300px;
+}
+
 
 /* PROPIETARIO DETAIL */
 

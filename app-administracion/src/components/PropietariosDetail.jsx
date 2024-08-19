@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import arraypropietarios from "../json/propietarios.json"
 import Datos from "./Datos"
 import FotoNombreProp from "./FotoNombreProp"
+import Inquilinos from "./Inquilinos"
+import BotonEliminar from "./BotonEliminar";
 
 
 const PropietariosDetail = () => {
@@ -22,16 +24,20 @@ const PropietariosDetail = () => {
         <>
             <h1 className="text-center my-4">Propietario</h1>
             <div className="container">
-                <div className="row text-center my-5 align-items-center">
+                <BotonEliminar />
+                <div className="row text-center my-5 align-items-center ">
                     <div className="col">
-                      <FotoNombreProp propietario ={propietarios}/>
+                        <FotoNombreProp propietario={propietarios} />
                     </div>
                     <div className="col">
                         <h2>Datos</h2>
-                        <Datos datos={propietarios}/>
+                        <Datos datos={propietarios} />
                     </div>
                 </div>
-                
+                <div className="row text-center">
+                    <Inquilinos />
+                </div>
+
             </div>
 
         </>

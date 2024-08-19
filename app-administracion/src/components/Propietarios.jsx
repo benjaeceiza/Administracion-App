@@ -4,13 +4,13 @@ import imagenUsuario from "../assets/usuario.png"
 import {Link} from "react-router-dom"
 
 
-const Propietarios = () => {
+const Propietarios = ({propietario}) => {
     return (
         <>
-            {arrayPropietarios.map(propietario => (
-                <div key={propietario.id} className="col-3 my-5">
+            {propietario.map(propietario => (
+                <div key={propietario.id} className="col-3 my-5 ancho">
                   <Link to={"/propietario/"+propietario.id}><img src={imagenUsuario} alt="" /></Link>
-                  <p>{propietario.nombre} {propietario.apellido}</p>
+                  <p className="my-3">{propietario.nombre} {propietario.apellido}</p>
                 </div>
 
             ))}

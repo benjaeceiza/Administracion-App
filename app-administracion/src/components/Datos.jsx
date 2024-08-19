@@ -11,7 +11,7 @@ const Datos = ({ datos }) => {
                     <div className="row">
                         <div className="col">
                             <label className="label-datos">Teléfono:</label>
-                            <p>{elemento.telefono}</p>
+                            <p>{elemento.nombre}</p>
                             <label className="label-datos">Email:</label>
                             <p>{elemento.email}</p>
                             <label className="label-datos">DNI:</label>
