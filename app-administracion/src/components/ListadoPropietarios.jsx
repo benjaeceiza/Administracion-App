@@ -27,7 +27,7 @@ const ListadoPropietarios = () => {
     
     
       },[])
-    
+      
 
 
     return (

@@ -1,10 +1,10 @@
 
 import { useParams } from "react-router-dom"
-import inquilinos from "../json/inquilinos.json"
 import { useEffect, useState } from "react";
 import BotonEliminar from "./BotonEliminar";
-import FotoNombreProp from "./FotoNombreProp";
+import FotoNombreInqui from "./FotoNombreInqui";
 import DatosInquilinos from "./DatosInquilinos";
+import {  getFirestore, collection, getDocs } from "firebase/firestore";
 
 
 
@@ -12,16 +12,27 @@ import DatosInquilinos from "./DatosInquilinos";
 
     const {id} = useParams();
     const [inquilino,setInquilino] = useState([]);
+    console.log(id)
 
     useEffect(() =>{
-     
-   
-        setInquilino(inquilinos.filter(elemento => elemento.id == id))
-      
+        
+        const db = getFirestore();
+        const ItemCollection = collection(db,"propietarios",id,"inquilinos");
+ 
+        getDocs(ItemCollection).then(Snapshot =>{
+        
+            if(Snapshot.size > 0){
+              
+              setInquilino(Snapshot.docs.map(documento => ({id:documento.id,...documento.data()})));
+              // setCargando(false)
+            }else{
+              console.error("error")
+            }
+          })
+        
+     },[id])
 
-    },[id])
-          
-  
+       
     
     return(
         <>
@@ -30,7 +41,7 @@ import DatosInquilinos from "./DatosInquilinos";
                 <BotonEliminar />
                 <div className="row text-center my-5 align-items-center ">
                     <div className="col">
-                        <FotoNombreProp propietario={inquilino} />
+                        <FotoNombreInqui inquilino={inquilino} />
                     </div>
                     <div className="col">
                         <h2>Datos</h2>

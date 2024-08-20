@@ -1,19 +1,48 @@
 
 import { Link } from "react-router-dom"
-import arrayInquilinos from "../json/inquilinos.json"
+import { collection, getDocs, getFirestore} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import imagenUsuario from "../assets/usuario.png"
 
 
-   const inquilinos = () => {
+   const inquilinos = (id) => {
+
+    const [inquilino,setInquilino] = useState([])
+   
+  
+
+    useEffect(() =>{
+   
+      const db = getFirestore();
+      const itemCollection = collection(db,"propietarios",id.idPropietario,"inquilinos");
+
+     
+     
+  
+      getDocs(itemCollection).then(Snapshot =>{
+        
+        if(Snapshot.size > 0){
+          
+          setInquilino(Snapshot.docs.map(documento => ({id:documento.id,...documento.data()})));
+          // setCargando(false)
+        }else{
+          console.error("error")
+        }
+      })
+  
+  
+    },[])
+    
 
     return(
 
          <>
           <h1>inquilinos</h1>
           
-          {arrayInquilinos.map(inquilino => (
+          {inquilino.map(inquilino => (
             <div className="col mt-5">
-                <Link to = {"/inquilino/" + inquilino.id}><img src={inquilino.imagen} alt={inquilino.nombre} /></Link>
-                <p className="my-4">{inquilino.nombre}</p>
+                <Link to = {"/inquilino/" + id.idPropietario}><img src={imagenUsuario} alt={inquilino.nombre} /></Link>
+                <p className="my-4">{inquilino.nombre} {inquilino.apellido}</p>
             </div>
           ))}
          </>

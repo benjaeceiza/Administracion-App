@@ -1,44 +1,61 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import arraypropietarios from "../json/propietarios.json"
 import Datos from "./Datos"
 import FotoNombreProp from "./FotoNombreProp"
 import Inquilinos from "./Inquilinos"
 import BotonEliminar from "./BotonEliminar";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Cargando from "./Cargando"
 
 
 const PropietariosDetail = () => {
 
     const { id } = useParams();
-    const [propietarios, setPropietarios] = useState(arraypropietarios);
-
-    useEffect(() => {
-
-        setPropietarios(arraypropietarios.filter(elemento => elemento.id == id))
-
-    }, [id])
+    const [propietario, setPropietarios] = useState([]);
+    const [cargador,setCargador] = useState(true)
 
 
+    useEffect(() =>{
+        
+        const db = getFirestore();
+        const docRef = doc(db,"propietarios",id);
+ 
+        getDoc(docRef).then(snapShot =>{
+          if(snapShot.exists()){
+           
+             setPropietarios({id:snapShot.id,...snapShot.data()});
+             setCargador(false)
+ 
+          }else{
+             console.error("error")
+          }
+ 
+        })
+        
+     },[id])
+        
+        
 
     return (
         <>
-            <h1 className="text-center my-4">Propietario</h1>
+            {cargador ? <Cargando/> : 
             <div className="container">
+                <h1 className="text-center my-4">Propietario</h1>
                 <BotonEliminar />
                 <div className="row text-center my-5 align-items-center ">
                     <div className="col">
-                        <FotoNombreProp propietario={propietarios} />
+                        <FotoNombreProp propietario={propietario} />
                     </div>
                     <div className="col">
                         <h2>Datos</h2>
-                        <Datos datos={propietarios} />
+                        <Datos datos={propietario} />
                     </div>
                 </div>
                 <div className="row text-center">
-                    <Inquilinos />
+                    <Inquilinos idPropietario={id} />
                 </div>
 
-            </div>
+            </div>}
 
         </>
     )

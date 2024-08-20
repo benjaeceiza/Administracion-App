@@ -1,5 +1,5 @@
 
-import arrayPropietarios from "../json/propietarios.json"
+
 import imagenUsuario from "../assets/usuario.png"
 import {Link} from "react-router-dom"
 

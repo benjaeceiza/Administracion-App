@@ -18,7 +18,7 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ">
                             <li className="nav-item">
-                                <NavLink to={"/propietarios"} className="nav-link text-white" href="#">Propietarios/Inq</NavLink>
+                                <NavLink to={"/propietarios"} className="nav-link text-white" href="#">Propietarios</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link text-white" href="#">Reclamos</NavLink>
