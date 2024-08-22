@@ -32,6 +32,8 @@ import imagenUsuario from "../assets/usuario.png"
   
   
     },[])
+
+   
     
 
     return(
@@ -40,8 +42,8 @@ import imagenUsuario from "../assets/usuario.png"
           <h1>inquilinos</h1>
           
           {inquilino.map(inquilino => (
-            <div className="col mt-5">
-                <Link to = {"/inquilino/" + id.idPropietario}><img src={imagenUsuario} alt={inquilino.nombre} /></Link>
+            <div key={inquilino.id} className="col mt-5">
+                <Link to = {"/inquilino/" + id.idPropietario + "/" + inquilino.id}><img src={imagenUsuario} alt={inquilino.nombre} /></Link>
                 <p className="my-4">{inquilino.nombre} {inquilino.apellido}</p>
             </div>
           ))}

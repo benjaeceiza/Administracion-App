@@ -5,13 +5,13 @@ const FotoNombreInqui = ({inquilino}) =>{
     return(
       <>
         
-          {inquilino.map(e =>(
-           <div key={e.id} className="contenedor-foto-nombre">
+          
+           <div key={inquilino.id} className="contenedor-foto-nombre">
            <img src={foto} alt="" />
-           <p className="my-3">{e.nombre} {e.apellido}</p>
+           <p className="my-3">{inquilino.nombre} {inquilino.apellido}</p>
           </div>
 
-          ))}
+        
       </>
     )
 }

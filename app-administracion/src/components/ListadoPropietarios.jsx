@@ -2,11 +2,13 @@ import Propietarios from "./Propietarios";
 import BotonAgregar from "./BotonAgregar";
 import { collection, getDocs, getFirestore} from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Cargando from "./Cargando";
 
 
 const ListadoPropietarios = () => {
 
     const [propietario,setPropietario] = useState([]);
+    const [cargando,setCargando] = useState(true);
    
     useEffect(() =>{
    
@@ -19,7 +21,7 @@ const ListadoPropietarios = () => {
           if(Snapshot.size > 0){
             
             setPropietario(Snapshot.docs.map(documento => ({id:documento.id,...documento.data()})));
-            // setCargando(false)
+            setCargando(false)
           }else{
             console.error("error")
           }
@@ -31,13 +33,14 @@ const ListadoPropietarios = () => {
 
 
     return (
-        <>
+        <>{cargando ? <Cargando/> :
            <div className="container my-5">
             <BotonAgregar/>
             <div className="contenedor-propietarios text-center ">
              <Propietarios propietario={propietario}/>
             </div>
            </div>
+        }
         </>
     )
 }

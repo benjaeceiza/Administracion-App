@@ -4,40 +4,44 @@ import { useEffect, useState } from "react";
 import BotonEliminar from "./BotonEliminar";
 import FotoNombreInqui from "./FotoNombreInqui";
 import DatosInquilinos from "./DatosInquilinos";
-import {  getFirestore, collection, getDocs } from "firebase/firestore";
-
+import {  getFirestore, getDoc,doc } from "firebase/firestore";
+import Cargando from "./Cargando";
 
 
  const InquilinosDetail = () =>{
 
-    const {id} = useParams();
+    const {id,idInquilino} = useParams();
     const [inquilino,setInquilino] = useState([]);
-    console.log(id)
+    const [cargador,setCargador] = useState(true)
+   
 
     useEffect(() =>{
         
-        const db = getFirestore();
-        const ItemCollection = collection(db,"propietarios",id,"inquilinos");
- 
-        getDocs(ItemCollection).then(Snapshot =>{
-        
-            if(Snapshot.size > 0){
-              
-              setInquilino(Snapshot.docs.map(documento => ({id:documento.id,...documento.data()})));
-              // setCargando(false)
-            }else{
-              console.error("error")
-            }
-          })
-        
-     },[id])
+      const db = getFirestore();
+      const docRef = doc(db,"propietarios",id,"inquilinos",idInquilino);
 
-       
-    
+      getDoc(docRef).then(snapShot =>{
+        if(snapShot.exists()){
+         
+           setInquilino({id:snapShot.id,...snapShot.data()});
+           setCargador(false)
+
+        }else{
+           console.error("error")
+        }
+
+      })
+      
+   },[id,idInquilino])
+      
+
+
+   
     return(
         <>
-          <h1 className="text-center my-4">Inquilino</h1>
+        { cargador ? <Cargando/> :
             <div className="container">
+              <h1 className="text-center my-4">Inquilino</h1>
                 <BotonEliminar />
                 <div className="row text-center my-5 align-items-center ">
                     <div className="col">
@@ -48,9 +52,8 @@ import {  getFirestore, collection, getDocs } from "firebase/firestore";
                         <DatosInquilinos datos={inquilino} />
                     </div>
                 </div>
-               
-
             </div>
+        }
         </>
     )
 

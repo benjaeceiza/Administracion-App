@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const BotonAgregar = () =>{
 
@@ -5,7 +6,7 @@ const BotonAgregar = () =>{
    <>
     <div className="contenedor-botones my-5 text-end">
 
-        <button className="btn btn-primary">Agregar</button>
+        <Link to ={"/agregar/propietario"} ><button className="btn btn-primary">Agregar</button></Link>
      
     </div>
    </>

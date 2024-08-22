@@ -4,6 +4,17 @@
   font-family: sans-serif;
 }
 
+.cargando{
+
+  width: 100%;
+  height: 1000px;
+
+}
+
+.spinner-border{
+  margin-top: 270px;
+}
+
 /* NAV BAR */
 
 
