@@ -35,6 +35,7 @@ const ListadoPropietarios = () => {
     return (
         <>{cargando ? <Cargando/> :
            <div className="container my-5">
+             <h1 className="text-center">Listado de Propietarios</h1>
             <BotonAgregar/>
             <div className="contenedor-propietarios text-center ">
              <Propietarios propietario={propietario}/>

@@ -1,4 +1,5 @@
 
+import imagenEditar from "../assets/boton-editar.png"
 
 const Datos = ({ datos }) => {
 
@@ -10,13 +11,25 @@ const Datos = ({ datos }) => {
                 <div className="row">
                     <div className="col">
                         <label className="label-datos">Telefono:</label>
-                        <p>{1}</p>
+                        <div className="contenedor-label-parrafo">
+                            <p>{datos.telefono}</p>
+                            <img height={24} src={imagenEditar} alt="" />
+                        </div>
                         <label className="label-datos">Email:</label>
-                        <p>{1}</p>
-                        <label className="label-datos">DNI:</label>
-                        <p>{1}</p>
+                        <div className="contenedor-label-parrafo">
+                            <p>{datos.email}</p>
+                            <img height={24} src={imagenEditar} alt="" />
+                        </div>
+                        <label className="label-datos">DNI/CUIT/CUIL</label>
+                        <div className="contenedor-label-parrafo">
+                            <p>{datos.cuit}</p>
+                            <img height={24} src={imagenEditar} alt="" />
+                        </div>
                         <label className="label-datos">Alias o CBU:</label>
-                        <p>{1}</p>
+                        <div className="contenedor-label-parrafo">
+                            <p>{datos.cbu}</p>
+                            <img height={24} src={imagenEditar} alt="" />
+                        </div>
                     </div>
                 </div>
             </div>

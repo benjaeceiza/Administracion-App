@@ -10,7 +10,7 @@ import Cargando from "./Cargando";
 
  const InquilinosDetail = () =>{
 
-    const {id,idInquilino} = useParams();
+    const {idInquilino} = useParams();
     const [inquilino,setInquilino] = useState([]);
     const [cargador,setCargador] = useState(true)
    
@@ -18,7 +18,7 @@ import Cargando from "./Cargando";
     useEffect(() =>{
         
       const db = getFirestore();
-      const docRef = doc(db,"propietarios",id,"inquilinos",idInquilino);
+      const docRef = doc(db,"inquilinos",idInquilino);
 
       getDoc(docRef).then(snapShot =>{
         if(snapShot.exists()){
@@ -32,7 +32,9 @@ import Cargando from "./Cargando";
 
       })
       
-   },[id,idInquilino])
+   },[idInquilino])
+
+
       
 
 

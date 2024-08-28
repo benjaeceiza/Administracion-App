@@ -9,7 +9,7 @@ const FotoNombreProp = ({propietario}) => {
             
                <div key={propietario.id} className="contenedor-foto-nombre">
                 <img src={foto} alt="" />
-                <p className="my-3">{propietario.nombre} {propietario.apellido}</p>
+                <p className="my-3">{propietario.apellido} {propietario.nombre} </p>
                </div>
                    
         </>

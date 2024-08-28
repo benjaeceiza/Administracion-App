@@ -8,7 +8,7 @@ const FotoNombreInqui = ({inquilino}) =>{
           
            <div key={inquilino.id} className="contenedor-foto-nombre">
            <img src={foto} alt="" />
-           <p className="my-3">{inquilino.nombre} {inquilino.apellido}</p>
+           <p className="my-3"> {inquilino.apellido} {inquilino.nombre}</p>
           </div>
 
         

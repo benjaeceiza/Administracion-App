@@ -6,6 +6,7 @@ import Inquilinos from "./Inquilinos"
 import BotonEliminar from "./BotonEliminar";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import Cargando from "./Cargando"
+import BotonAgregarInqui from "./BotonAgregarInqui";
 
 
 const PropietariosDetail = () => {
@@ -52,6 +53,7 @@ const PropietariosDetail = () => {
                     </div>
                 </div>
                 <div className="row text-center">
+                    
                     <Inquilinos idPropietario={id} />
                 </div>
 

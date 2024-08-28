@@ -5,7 +5,10 @@ import Inicio from "./components/Inicio"
 import ListadoPropietarios from "./components/ListadoPropietarios"
 import PropietariosDetail from "./components/PropietariosDetail"
 import InquilinosDetail from "./components/InquilinosDetail"
-import AgregarProp from "./components/AgregarProp"
+import ListadoIquilinos from "./components/ListadoInquilinos"
+import AgregarInquilino from "./components/AgregarInquilino"
+import AgregarPropietario from "./components/AgregarPropietario"
+
 
 
 function App() {
@@ -13,14 +16,17 @@ function App() {
 
   return (
     <>
+    
     <BrowserRouter>
       <Navbar/>
       <Routes>
       <Route path="/" element={<Inicio/>}/>
       <Route path="/propietarios" element={<ListadoPropietarios/>}/>
+      <Route path="/inquilinos" element={<ListadoIquilinos/>}/>
       <Route path="/propietario/:id" element={<PropietariosDetail/>}/>
-      <Route path="/inquilino/:id/:idInquilino" element={<InquilinosDetail/>}/>
-      <Route path="/agregar/:id" element={<AgregarProp/>}/>
+      <Route path="/inquilino/:idInquilino" element={<InquilinosDetail/>}/>
+      <Route path="/agregar/inquilino/:idInquilino" element={<AgregarInquilino/>}/>
+      <Route path="/agregar/propietario" element={<AgregarPropietario/>}/>
       </Routes>
     </BrowserRouter>
     </>

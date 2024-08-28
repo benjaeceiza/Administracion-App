@@ -3,6 +3,7 @@
 import logo from "../assets/logo.jpg"
 import { NavLink } from "react-router-dom"
 
+
 const Navbar = () => {
  
     
@@ -19,6 +20,9 @@ const Navbar = () => {
                         <ul className="navbar-nav ">
                             <li className="nav-item">
                                 <NavLink to={"/propietarios"} className="nav-link text-white" href="#">Propietarios</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={"/inquilinos"} className="nav-link text-white" href="#">Inquilinos</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link text-white" href="#">Reclamos</NavLink>
