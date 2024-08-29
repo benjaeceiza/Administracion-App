@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.cargando {
+
+  width: 100%;
+  height: 1000px;
+
+}
+
+.spinner-border {
+  margin-top: 270px;
+}
+
+/* NAV BAR */
+
+
+.navbar {
+  background-color: rgb(10, 167, 119);
+  height: 80px;
+}
+
+
+.navbar-expand-lg .navbar-collapse {
+
+  justify-content: space-around;
+
+}
+
+
+.logo {
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* LISTADO DE PROPIETARIOS */
+
+.titulo-boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+
+
+.contenedor-propietarios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ancho {
+  width: 250px;
+  margin: 0px 10px;
+  padding: 40px 0px 0px 0px;
+  border: 1px rgb(110, 110, 110) solid;
+  border-radius: 20px;
+
+}
+
+.mg {
+  margin: auto;
+}
+
+.fondo-nombre {
+  margin-top: 50px;
+  background-color: rgb(10, 167, 119);
+  padding: 1px;
+  border-end-end-radius: 20px;
+  border-end-start-radius: 20px;
+
+}
+
+.nombre {
+  color: white;
+}
+
+
+/* PROPIETARIO DETAIL */
+.contenedor-propietario-detail{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+
+  
+}
+
+.contenedor-datos-fotonombre{
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+}
+
+.contenedor-foto-nombre {
+  border: solid 1px black;
+  width: 300px;
+  padding: 40px 0px;
+  border-radius: 20px;
+  margin-top: 40px;
+
+}
+
+.contenedor-propiedades-inquilinos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 90%; 
+  margin: 40px auto;
+
+}
+
+.contenedor-propiedades {
+  overflow: hidden;
+  border: solid rgb(10,167,119) 3px;
+  margin: auto;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.contenedor-inqui {
+ 
+  min-width: 250px;
+  border: solid rgb(10,167,119) 3px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin: auto;
+ 
+}
+
+.img-nombre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 15px;
+}
+
+.contenedor-datos {
+
+  border: solid 3px rgb(10,167,119);
+  padding: 20px;
+  border-radius: 20px;
+  text-align: start;
+  min-width: 250px;
+}
+
+/* INQUILINO DETAIL */
+
+
+.contenedor-label-parrafo {
+
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.contenedor-label-parrafo img:hover {
+
+  background-color: rgb(168, 168, 168);
+}
+
+/* Formulario inquilino*/
+
+.contenedor-fecha-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-fecha {
+  padding: 0px 10px;
+  margin-top: 10px
+}
+
+.centro {
+
+  margin-left: 50%;
+}
+
+.validacion-error {
+  border: rgb(223, 114, 114), 2px solid;
+  box-shadow: 0px 0px 10px 1px rgb(245, 110, 110);
+}

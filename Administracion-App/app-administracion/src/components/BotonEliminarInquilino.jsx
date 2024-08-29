@@ -1,0 +1,72 @@
+import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
+import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const BotonEliminarInquilino = () => {
+
+    const {idInquilino} = useParams();
+
+    const notify = () => toast.success("Inquilino Eliminado con exito!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    
+    });
+    
+    
+
+    const MySwal = withReactContent(Swal)
+
+    const alerta = () => {
+
+        Swal.fire({
+            title: "Estás seguro?",
+            text: "Se borrará definitivamente",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "green",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Eliminar"
+          }).then((result) => {
+            if (result.isConfirmed) {
+            
+              
+              eliminarInquilino();
+            }
+          });
+    }
+
+
+    const eliminarInquilino = () =>{
+        const db = getFirestore();
+        const docRef = doc(db, "inquilinos", idInquilino)
+
+        deleteDoc(docRef).then(
+         
+            notify()
+            
+        )
+    }
+
+    return (
+
+        <>
+        <ToastContainer/>
+             <div className="contenedor-botones text-center">
+                <button onClick={() => alerta()} className="btn btn-primary">Eliminar</button>
+            </div>
+        </>
+    )
+}
+
+export default BotonEliminarInquilino;
