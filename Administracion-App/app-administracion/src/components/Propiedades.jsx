@@ -4,14 +4,14 @@ const Propiedades = () => {
 
     return (
         <>
-            <div className="contenedor-propiedades">
+            <div className="contenedor-propiedades text-center">
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Dirrección</th>
+                            <th scope="col">N° Finca</th>
+                            <th scope="col">N° Niz</th>
+                            <th scope="col">N° Cta Gas</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,7 +29,8 @@ const Propiedades = () => {
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td >Larry the Bird</td>
+                            <td>@twitter</td>
                             <td>@twitter</td>
                         </tr>
                     </tbody>

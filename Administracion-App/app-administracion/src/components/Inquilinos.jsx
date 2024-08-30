@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import imagenUsuario from "../assets/usuario.png"
 import Cargando from "./Cargando";
 import BotonAgregarInqui from "./BotonAgregarInqui";
+import CargandoInquilinos from "./CargandoInquilinos";
 
 
 const inquilinos = (id) => {
@@ -27,21 +28,23 @@ const inquilinos = (id) => {
       if (Snapshot.size > 0) {
 
         setArrayInquilinos(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
-        setCargador(false)
+        
       } else {
         console.error("error")
       }
     })
-
-
+    
+    
   }, [])
-
+  
   setTimeout(() => {
-
+    
     setInquilino(arrayInquilinos.filter(e => e.idprop == id.idPropietario))
-
+    setCargador(false)
+    
+    
   }, 1000)
-
+  
 
 
 
@@ -52,7 +55,7 @@ const inquilinos = (id) => {
 
       {/* <div className="titulo-boton">
         <h1>inquilinos</h1>
-        <BotonAgregarInqui idPropietario={id.idPropietario} />
+       
       </div>
       {inquilino.map(inquilino => (
         <div key={inquilino.id} className="mg ancho">
@@ -63,9 +66,9 @@ const inquilinos = (id) => {
         </div>))} */}
 
         <div className="contenedor-inqui">
-          {
+          {cargador ? <CargandoInquilinos/>:
             inquilino.map(e => (
-              <div className="img-nombre"> 
+              <div className="img-nombre"key={e.id} > 
                 <Link to={"/inquilino/" + e.id}><img height={100} src={imagenUsuario} alt="" /></Link>
                 <p>{e.apellido} {e.nombre}</p>
               </div>
