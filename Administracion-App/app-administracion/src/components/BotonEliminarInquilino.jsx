@@ -1,15 +1,14 @@
 import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const BotonEliminarInquilino = () => {
-
+const BotonEliminarInquilino = ({idprop}) => {
+    const navigate =useNavigate();
     const {idInquilino} = useParams();
-
     const notify = () => toast.success("Inquilino Eliminado con exito!", {
         position: "top-center",
         autoClose: 1000,
@@ -56,6 +55,11 @@ const BotonEliminarInquilino = () => {
             notify()
             
         )
+
+        setTimeout(() =>{
+            navigate("/propietario/"+ idprop )
+        },1500)
+
     }
 
     return (

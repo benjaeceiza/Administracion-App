@@ -1,4 +1,4 @@
-import { Timestamp } from "firebase/firestore";
+
 import { useState } from "react";
 import imagenEditar from "../assets/boton-editar.png"
 
@@ -8,12 +8,16 @@ const DatosInquilinos = ({ datos }) => {
     let vigencia;
     let vencimiento
     
+
+    
     vigencia = new Intl.DateTimeFormat('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(datos.vigencia.fecha.seconds * 1000);
     vencimiento = new Intl.DateTimeFormat('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(datos.vencimiento.fecha.seconds * 1000);
 
+ 
 
 
 
+  
 
 
 
@@ -26,7 +30,7 @@ const DatosInquilinos = ({ datos }) => {
                         <label className="label-datos">Teléfono:</label>
                         <div className="contenedor-label-parrafo">
                             <p>{datos.telefono}</p>
-                            <img height={24} src={imagenEditar} alt="" />
+                            <img onClick={()=> alert("editar")} height={24} src={imagenEditar} alt="" />
                         </div>
                         <label className="label-datos">Email:</label>
                         <div className="contenedor-label-parrafo">

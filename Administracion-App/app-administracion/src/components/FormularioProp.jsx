@@ -2,11 +2,12 @@ import { useRef, useState } from "react"
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 
 
 const FormularioProp = () => {
-
+    const navigate = useNavigate();
     const [nombreProp, setNombreProp] = useState("");
     const [apellidoProp, setApellidoProp] = useState("");
     const [telefonoProp, setTelefonoPropo] = useState(0);
@@ -49,6 +50,10 @@ const FormularioProp = () => {
         setTelefonoPropo("");
         setCbuProp("");
         setCuitProp("");
+        setTimeout(() =>{
+
+            navigate("/propietarios")
+        },1500)
     }
 
     const notify = (texto) => toast.error(texto, {

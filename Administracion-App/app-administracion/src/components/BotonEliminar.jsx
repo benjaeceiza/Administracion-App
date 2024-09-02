@@ -1,10 +1,13 @@
 
 
-import { getFirestore, doc, deleteDoc} from "firebase/firestore"
+import { getFirestore, doc, deleteDoc } from "firebase/firestore"
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+<link rel="stylesheet" href="@sweetalert2/theme-bulma/bulma.css"></link>
+
 
 
 
@@ -22,10 +25,12 @@ const notify = () => toast.success("Propietario Eliminado con exito!", {
 
 
 
+
 const BotonEliminar = ({ propietario, inquilinos }) => {
-
-
-    const MySwal = withReactContent(Swal)
+  
+    const navigate = useNavigate()
+    const MySwal = withReactContent(Swal);
+  
 
     const alerta = () => {
 
@@ -37,19 +42,21 @@ const BotonEliminar = ({ propietario, inquilinos }) => {
             confirmButtonColor: "green",
             cancelButtonColor: "#d33",
             cancelButtonText: "Cancelar",
-            confirmButtonText: "Eliminar"
-          }).then((result) => {
+            confirmButtonText: "Eliminar",
+
+
+        }).then((result) => {
             if (result.isConfirmed) {
-              
-              eliminarPropietario();
+
+                eliminarPropietario();
             }
-          });
+        });
     }
 
-    
+
     const eliminarPropietario = () => {
-        
-    
+
+
         const db = getFirestore();
         const docRef = doc(db, "propietarios", propietario)
 
@@ -62,21 +69,19 @@ const BotonEliminar = ({ propietario, inquilinos }) => {
 
             const docRef2 = doc(db, "inquilinos", e.id)
             deleteDoc(docRef2)
-
+          
         })
-    }
 
+     setTimeout(() =>{
+        navigate("/propietarios")
+     },2000)
+    } 
 
-
-
-
-
-
-
+   
 
     return (
         <>
-           <ToastContainer/>
+            <ToastContainer />
             <div className="contenedor-botones text-center">
                 <button onClick={() => alerta()} className="btn btn-primary">Eliminar</button>
             </div>

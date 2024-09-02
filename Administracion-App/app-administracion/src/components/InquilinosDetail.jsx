@@ -15,6 +15,8 @@ const InquilinosDetail = () => {
     const [cargador, setCargador] = useState(true)
 
 
+
+
     useEffect(() => {
 
         const db = getFirestore();
@@ -45,7 +47,7 @@ const InquilinosDetail = () => {
                 <div className="container">
                     <div className="titulo-boton">
                         <h1 className="text-center my-4">Inquilino</h1>
-                        <BotonEliminarInquilino />
+                        <BotonEliminarInquilino idprop={inquilino.idprop} />
                     </div>
                     <div className="row text-center my-5 align-items-center ">
                         <div className="col">

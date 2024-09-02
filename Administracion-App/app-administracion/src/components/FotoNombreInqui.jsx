@@ -1,19 +1,20 @@
 
 import foto from "../assets/usuario.png"
-const FotoNombreInqui = ({inquilino}) =>{
+const FotoNombreInqui = ({ inquilino }) => {
 
-    return(
-      <>
-        
-          
-           <div key={inquilino.id} className="contenedor-foto-nombre">
-           <img src={foto} alt="" />
-           <p className="my-3"> {inquilino.apellido} {inquilino.nombre}</p>
-          </div>
+  return (
+    <>
 
-        
-      </>
-    )
+      <div key={inquilino.id} className="ancho ">
+        <img src={foto} alt="" />
+        <div className="nombre fondo-nombre">
+          <p className="my-3 nombre"> {inquilino.apellido} {inquilino.nombre}</p>
+        </div>
+      </div>
+
+
+    </>
+  )
 }
 
 export default FotoNombreInqui

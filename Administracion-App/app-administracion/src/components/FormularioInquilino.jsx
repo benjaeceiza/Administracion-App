@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const FormularioInquilino = () => {
+
+    const navigate = useNavigate()
 
     registerLocale("es", es);
 
@@ -185,7 +187,10 @@ const FormularioInquilino = () => {
         setTelefonoInqui("")
         setVencimineto({ fecha: new Date() })
         setVigencia({ fecha: new Date() })
+        setTimeout(()=>{
+            navigate("/propietario/"+ idInquilino)
 
+        },1500)
     }
 
 
@@ -194,7 +199,7 @@ const FormularioInquilino = () => {
 
         <>
             <ToastContainer />
-            <div className="conatiner">
+            <div className="continer">
                 <form className="container" ref={formulario} >
                     <div className="input-group mb-3">
 
@@ -235,6 +240,7 @@ const FormularioInquilino = () => {
                     </div>
 
                 </form>
+
                 <button className="btn btn-primary centro" onClick={control} >Agregar</button>
             </div>
         </>

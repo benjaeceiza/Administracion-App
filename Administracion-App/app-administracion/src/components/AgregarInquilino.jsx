@@ -1,13 +1,12 @@
-import { useParams } from "react-router-dom";
+
 import FormularioInquilino from "./FormularioInquilino";
 
   
 
   const AgregarInquilino = () =>{
 
-    const { id } = useParams();
     
-    
+  
 
    return(
      

@@ -1,9 +1,30 @@
 
+import { useState } from "react";
 import imagenEditar from "../assets/boton-editar.png"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const Datos = ({ datos }) => {
 
-
+    const editarTelefono = () =>{
+        let editar;
+      Swal.fire({
+          title: "Enter your IP address",
+          input: "text",
+          inputLabel: "Your IP address",
+          inputValue:editar,
+          showCancelButton: true,
+          inputValidator: (editar) => {
+            if (editar) {
+              return "You need to write something!";
+            }
+          }
+        });
+        if (editar) {
+          Swal.fire(`Your IP address is `);
+        }
+        
+    }
 
     return (
         <>
@@ -13,7 +34,7 @@ const Datos = ({ datos }) => {
                         <label className="label-datos">Telefono:</label>
                         <div className="contenedor-label-parrafo">
                             <p>{datos.telefono}</p>
-                            <img height={24} src={imagenEditar} alt="" />
+                            <img onClick={() => editarTelefono()} height={24} src={imagenEditar} alt="editar"/>
                         </div>
                         <label className="label-datos">Email:</label>
                         <div className="contenedor-label-parrafo">

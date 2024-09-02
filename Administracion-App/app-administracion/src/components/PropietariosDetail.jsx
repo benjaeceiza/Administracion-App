@@ -7,6 +7,9 @@ import BotonEliminar from "./BotonEliminar";
 import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import Cargando from "./Cargando"
 import Propiedades from "./Propiedades";
+import BotonAgregarInqui from "./BotonAgregarInqui";
+import BotonAgregarCasa from "./BotonAgregarCasa";
+
 
 
 
@@ -17,6 +20,7 @@ const PropietariosDetail = () => {
     const [cargador, setCargador] = useState(true);
     const [inquilinos, setInquilinos] = useState([])
     const [inquilinosAgrupado, setInquilinosAgrupado] = useState([])
+
 
 
     useEffect(() => {
@@ -37,6 +41,7 @@ const PropietariosDetail = () => {
 
         })
 
+
         getDocs(docRef2).then(Snapshot => {
 
             if (Snapshot.size > 0) {
@@ -55,7 +60,6 @@ const PropietariosDetail = () => {
         setInquilinosAgrupado(inquilinos.filter(e => e.idprop == id));
 
     }, 2000)
-
 
     return (
         <>
@@ -76,12 +80,12 @@ const PropietariosDetail = () => {
                     </div>
                     <div className="contenedor-propiedades-inquilinos">
                         <div className="col my-5">
-
-                        <Propiedades />
+                            <BotonAgregarCasa idPropietario={id}/>
+                            <Propiedades />
                         </div>
                         <div className="col my-5">
-
-                        <Inquilinos idPropietario={id} />
+                            <BotonAgregarInqui idPropietario={id} />
+                            <Inquilinos idPropietario={id} />
                         </div>
                     </div>
 

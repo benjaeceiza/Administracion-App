@@ -43,28 +43,23 @@ const inquilinos = (id) => {
     setCargador(false)
     
     
-  }, 1000)
+  },1)
   
+  
+  if(inquilino.length == 0 ){
+    return(
+      <div className="contenedor-inqui">
+        <h2>Sin Inquilinos</h2>
+      </div>
+    )
+  }
 
-
-
+ 
 
   return (
 
     <>
-
-      {/* <div className="titulo-boton">
-        <h1>inquilinos</h1>
-       
-      </div>
-      {inquilino.map(inquilino => (
-        <div key={inquilino.id} className="mg ancho">
-          <Link to={"/inquilino/" + inquilino.id}><img src={imagenUsuario} alt={inquilino.nombre} /></Link>
-          <div className=" nombre fondo-nombre">
-          <p className=" my-3 nombre"> {inquilino.apellido} {inquilino.nombre} </p>
-          </div>
-        </div>))} */}
-
+        
         <div className="contenedor-inqui">
           {cargador ? <CargandoInquilinos/>:
             inquilino.map(e => (
