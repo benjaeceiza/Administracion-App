@@ -15,12 +15,26 @@
   margin-top: 270px;
 }
 
+
+
+
 /* NAV BAR */
 
+.container-fluid{
+  display: flex;
+justify-content: space-between;
 
-.navbar {
-  background-color: rgb(10, 167, 119);
-  height: 80px;
+}
+.navbar{
+  padding: 0;
+  
+}
+
+.largo{
+
+ min-height: 80px;
+ padding: 20px 10px;
+
 }
 
 
@@ -158,6 +172,7 @@
   border-radius: 20px;
   text-align: start;
   min-width: 250px;
+  width: 90%;
 }
 
 /* INQUILINO DETAIL */

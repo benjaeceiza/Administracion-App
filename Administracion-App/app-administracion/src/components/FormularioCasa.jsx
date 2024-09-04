@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -20,10 +21,20 @@ const FormularioCasa = () => {
     }
 
 const crearPropiedad = () =>{
-    alert(direccion)
-    alert(finca)
-    alert(niz)
-    alert(gas)
+   
+    const propiedad = {
+       direccion:direccion,
+       finca:finca,
+       nix:niz,
+       gas:gas,
+       idprop:idPropietario 
+    }
+
+    const db = getFirestore();
+    const orderCollection = collection(db, "propiedades");
+    addDoc(orderCollection, propiedad).then(
+         
+    )
 }
 
     return (

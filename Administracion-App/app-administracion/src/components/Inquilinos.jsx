@@ -49,7 +49,7 @@ const inquilinos = (id) => {
   if(inquilino.length == 0 ){
     return(
       <div className="contenedor-inqui">
-        <h2>Sin Inquilinos</h2>
+        <h3 className="my-3">Sin Inquilinos</h3>
       </div>
     )
   }

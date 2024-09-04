@@ -5,25 +5,27 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 const Datos = ({ datos }) => {
-
+ 
+ let datoNuevo;    
     const editarTelefono = () =>{
-        let editar;
-      Swal.fire({
+    
+        const datoEditar = Swal.fire({
           title: "Enter your IP address",
           input: "text",
           inputLabel: "Your IP address",
-          inputValue:editar,
+          inputValue:"",
           showCancelButton: true,
-          inputValidator: (editar) => {
-            if (editar) {
+          inputValidator: (datoNuevo) => {
+            if (!datoNuevo) {
               return "You need to write something!";
             }
           }
         });
-        if (editar) {
-          Swal.fire(`Your IP address is `);
+        if (datoNuevo) {
+          Swal.fire(`Your IP address is ${datoNuevo}`);
         }
         
+        console.log(datoEditar)
     }
 
     return (

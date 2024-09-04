@@ -1,10 +1,61 @@
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Cargando from "./Cargando";
+import tacho from "../assets/eliminar.png"
 
 
 const Propiedades = () => {
 
+    const [propiedades, setPropiedades] = useState([]);
+    const [filtroPropiedades, setFiltroPropiedades] = useState([]);
+    const { id } = useParams()
+    const [cargador, setCargador] = useState(true);
+
+
+
+    useEffect(() => {
+
+        const db = getFirestore();
+        const itemCollection = collection(db, "propiedades");
+
+
+        getDocs(itemCollection).then(Snapshot => {
+
+            if (Snapshot.size > 0) {
+
+                setPropiedades(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+
+            } else {
+                console.error("error")
+            }
+        })
+
+
+    }, [])
+
+
+    setTimeout(() => {
+
+            setFiltroPropiedades(propiedades.filter(e => e.idprop == id))
+            setCargador(false)
+    }, 1)
+
+
+    if (filtroPropiedades.length == 0) {
+
+        return (
+            <div className="contenedor-propiedades text-center">
+                <h3 className="my-3"> Sin Propiedades Cargadas</h3>
+            </div>
+        )
+    }
+
+
+
     return (
         <>
-            <div className="contenedor-propiedades text-center">
+            {cargador ? <Cargando /> : <div className="contenedor-propiedades text-center">
                 <table className="table">
                     <thead>
                         <tr>
@@ -15,27 +66,20 @@ const Propiedades = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td >Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
+
+                        {propiedades.map(e => (
+                            <tr key={e.id}>
+                                <td>{e.direccion}</td>
+                                <td>{e.finca}</td>
+                                <td>{e.gas}</td>
+                                <td>{e.gas}</td>
+                                <td><img height={20} src={tacho} alt="Eliminar" /></td>
+                            </tr>
+                        ))}
+
                     </tbody>
                 </table>
-            </div>
+            </div>}
         </>
     )
 }

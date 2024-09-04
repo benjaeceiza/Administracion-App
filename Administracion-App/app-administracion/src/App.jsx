@@ -9,6 +9,7 @@ import ListadoIquilinos from "./components/ListadoInquilinos"
 import AgregarInquilino from "./components/AgregarInquilino"
 import AgregarPropietario from "./components/AgregarPropietario"
 import FormularioCasa from "./components/FormularioCasa"
+import Buscados from "./components/Buscados"
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Route path="/agregar/inquilino/:idInquilino" element={<AgregarInquilino/>}/>
       <Route path="/agregar/propietario" element={<AgregarPropietario/>}/>
       <Route path="/agregar/propiedad/:idPropietario" element={<FormularioCasa/>}/>
+      <Route path="/buscar/:nombre" element={<Buscados/>}/>
       </Routes>
     </BrowserRouter>
     </>
