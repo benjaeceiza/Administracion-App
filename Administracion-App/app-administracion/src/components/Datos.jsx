@@ -15,7 +15,7 @@ const Datos = ({ datos }) => {
           inputLabel: "Your IP address",
           inputValue:"",
           showCancelButton: true,
-          inputValidator: (datoNuevo) => {
+          inputValidator: ({inputValue}) => {
             if (!datoNuevo) {
               return "You need to write something!";
             }

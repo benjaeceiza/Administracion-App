@@ -31,7 +31,7 @@ function App() {
       <Route path="/agregar/inquilino/:idInquilino" element={<AgregarInquilino/>}/>
       <Route path="/agregar/propietario" element={<AgregarPropietario/>}/>
       <Route path="/agregar/propiedad/:idPropietario" element={<FormularioCasa/>}/>
-      <Route path="/buscar/:nombre" element={<Buscados/>}/>
+      <Route path="/buscar/:nombreBuscado" element={<Buscados/>}/>
       </Routes>
     </BrowserRouter>
     </>

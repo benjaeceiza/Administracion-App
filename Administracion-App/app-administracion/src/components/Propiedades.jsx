@@ -1,4 +1,4 @@
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cargando from "./Cargando";
@@ -13,6 +13,21 @@ const Propiedades = () => {
     const [cargador, setCargador] = useState(true);
 
 
+    const eliminarPropiedad = (idPropiedad) =>{
+    
+            const db = getFirestore();
+            const docRef = doc(db, "propiedades", idPropiedad)
+    
+            deleteDoc(docRef).then(
+             
+
+            )
+    
+           
+        }
+    
+
+
 
     useEffect(() => {
 
@@ -22,7 +37,7 @@ const Propiedades = () => {
 
         getDocs(itemCollection).then(Snapshot => {
 
-            if (Snapshot.size > 0) {
+            if (Snapshot.size >= 0) {
 
                 setPropiedades(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
 
@@ -32,7 +47,7 @@ const Propiedades = () => {
         })
 
 
-    }, [])
+    }, [propiedades])
 
 
     setTimeout(() => {
@@ -40,6 +55,7 @@ const Propiedades = () => {
             setFiltroPropiedades(propiedades.filter(e => e.idprop == id))
             setCargador(false)
     }, 1)
+
 
 
     if (filtroPropiedades.length == 0) {
@@ -67,13 +83,13 @@ const Propiedades = () => {
                     </thead>
                     <tbody>
 
-                        {propiedades.map(e => (
+                        {filtroPropiedades.map(e => (
                             <tr key={e.id}>
                                 <td>{e.direccion}</td>
                                 <td>{e.finca}</td>
+                                <td>{e.nix}</td>
                                 <td>{e.gas}</td>
-                                <td>{e.gas}</td>
-                                <td><img height={20} src={tacho} alt="Eliminar" /></td>
+                                <td onClick={() => eliminarPropiedad(e.id)}><img height={20} src={tacho} alt="Eliminar" /></td>
                             </tr>
                         ))}
 
