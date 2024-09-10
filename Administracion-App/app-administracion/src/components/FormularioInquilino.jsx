@@ -24,8 +24,8 @@ const FormularioInquilino = () => {
     const [dniInqui, setDniInqui] = useState(0);
     const [direccionInqui, setDireccionInqui] = useState("");
     const [aumento, setAumento] = useState("");
-    const [vigencia, setVigencia] = useState({ fecha: new Date() });
-    const [vencimiento, setVencimineto] = useState({ fecha: new Date() });
+    const [vigencia, setVigencia] = useState({ fecha: "" });
+    const [vencimiento, setVencimineto] = useState({ fecha: ""});
     const formulario = useRef()
     const [error, setError] = useState(false);
     const [error2, setError2] = useState(false);
@@ -185,8 +185,8 @@ const FormularioInquilino = () => {
         setDniInqui("")
         setEmailInqui("")
         setTelefonoInqui("")
-        setVencimineto({ fecha: new Date() })
-        setVigencia({ fecha: new Date() })
+        setVencimineto({ fecha: "" })
+        setVigencia({ fecha: "" })
         setTimeout(()=>{
             navigate("/propietario/"+ idInquilino)
 

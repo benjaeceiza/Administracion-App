@@ -12,7 +12,7 @@ const Buscados = () => {
     const [arrayProp, setArrayProp] = useState([]);
     const [buscados, setBuscados] = useState([]);
     const [cargador, setCargador] = useState(true);
-    const [existe,setExiste ] = useState(true);
+    const [existe,setExiste ] = useState(false);
 
     useEffect(() => {
 
@@ -65,27 +65,31 @@ const Buscados = () => {
             }
         }
 
-        setCargador(false)
+       
     }, 1)
 
-
+      setTimeout(() =>{
+        
+        setCargador(false)
+      },1500)
    
       if(existe){
 
         return(
             <>
-             <h1>No existe usuaria</h1>
+              {cargador?<Cargando/>:<h1 className="text-center my-5">No existe usuario</h1>}
             </>
 
         )
+
       }else{
         return (
             <>
                 {cargador ? <Cargando /> :
                     <div>
-                        <h1>buscar {nombreBuscado}</h1>
+                        <h1 className="text-center my-5">Resultados de: {nombreBuscado}</h1>
                         {buscados.map(e => (
-                            <div key={e.id} className="col-3 my-5 ancho text-center">
+                            <div key={e.id} className="mg ancho text-center">
                                 <Link to={"/propietario/" + e.id}><img src={imagenUsuario} alt="" /></Link>
                                 <div className="nombre fondo-nombre">
                                     <p className="my-3 nombre"> {e.apellido} {e.nombre}</p>

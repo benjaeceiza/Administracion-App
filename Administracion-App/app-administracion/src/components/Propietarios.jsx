@@ -8,7 +8,7 @@ const Propietarios = ({ propietario }) => {
     return (
         <>
             {propietario.map(propietario => (
-                <div key={propietario.id} className="col-3 my-5 ancho">
+                <div key={propietario.id} className="col-3 my-5 ancho opacidad">
                     <Link to={"/propietario/" + propietario.id}><img src={imagenUsuario} alt="" /></Link>
                     <div className="nombre fondo-nombre">
                         <p className="my-3 nombre"> {propietario.apellido} {propietario.nombre}</p>

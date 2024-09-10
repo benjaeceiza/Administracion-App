@@ -44,11 +44,11 @@ const ListadoIquilinos = () => {
 
   return (
     <>
-      { cargando ? <Cargando/> :<div className="container my-5">
+      {cargando ? <Cargando /> : <div className="container my-5">
         <h1 className="my-5 text-center">Listado de Inquilinos</h1>
         <div className="contenedor-propietarios text-center ">
           {inquilinos.map(e => (
-            <div key={e.id} className="col-3 my-5 ancho">
+            <div key={e.id} className="col-3 my-5 ancho opacidad">
               <Link to={"/inquilino/" + e.id}><img src={imagen} alt={e.nombre} /></Link>
               <div className="fondo-nombre">
                 <p className="my-3 nombre">{e.apellido} {e.nombre}</p>

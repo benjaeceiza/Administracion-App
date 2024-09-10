@@ -1,4 +1,5 @@
 
+
 const Inicio = () => {
 
     return (
@@ -12,6 +13,7 @@ const Inicio = () => {
                     </div>
                 </div>
             </div>
+           
         </>
     )
 }

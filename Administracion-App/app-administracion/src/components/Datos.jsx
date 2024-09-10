@@ -1,32 +1,17 @@
 
 import { useState } from "react";
 import imagenEditar from "../assets/boton-editar.png"
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Editar from "./Editar";
+import { useContext } from "react";
+import { Context } from "./contexto/Context";
+
 
 const Datos = ({ datos }) => {
- 
- let datoNuevo;    
-    const editarTelefono = () =>{
-    
-        const datoEditar = Swal.fire({
-          title: "Enter your IP address",
-          input: "text",
-          inputLabel: "Your IP address",
-          inputValue:"",
-          showCancelButton: true,
-          inputValidator: ({inputValue}) => {
-            if (!datoNuevo) {
-              return "You need to write something!";
-            }
-          }
-        });
-        if (datoNuevo) {
-          Swal.fire(`Your IP address is ${datoNuevo}`);
-        }
-        
-        console.log(datoEditar)
-    }
+
+    const { editarTelefono, setEditarTelefono, editarEmail, setEditarEmail,
+        editarCuit, setEditarCuit, editarCbu, setEditarCbu
+    } = useContext(Context);
+
 
     return (
         <>
@@ -34,25 +19,28 @@ const Datos = ({ datos }) => {
                 <div className="row">
                     <div className="col">
                         <label className="label-datos">Telefono:</label>
-                        <div className="contenedor-label-parrafo">
+                        {editarTelefono ? <Editar tipo="Telefono" idProp={datos.id}></Editar> : <div className="contenedor-label-parrafo">
                             <p>{datos.telefono}</p>
-                            <img onClick={() => editarTelefono()} height={24} src={imagenEditar} alt="editar"/>
-                        </div>
+                            <img onClick={() => setEditarTelefono(true)} height={24} src={imagenEditar} alt="editar" />
+                        </div>}
+
                         <label className="label-datos">Email:</label>
-                        <div className="contenedor-label-parrafo">
+                        {editarEmail ? <Editar tipo="Email" idProp={datos.id}></Editar> : <div className="contenedor-label-parrafo">
                             <p>{datos.email}</p>
-                            <img height={24} src={imagenEditar} alt="" />
-                        </div>
+                            <img onClick={() => setEditarEmail(true)} height={24} src={imagenEditar} alt="editar" />
+                        </div>}
+
                         <label className="label-datos">DNI/CUIT/CUIL</label>
-                        <div className="contenedor-label-parrafo">
+                        {editarCuit ? <Editar tipo="DNI/CUIT/CUIL" idProp={datos.id}></Editar> : <div className="contenedor-label-parrafo">
                             <p>{datos.cuit}</p>
-                            <img height={24} src={imagenEditar} alt="" />
-                        </div>
+                            <img onClick={() => setEditarCuit(true)} height={24} src={imagenEditar} alt="editar" />
+                        </div>}
+
                         <label className="label-datos">Alias o CBU:</label>
-                        <div className="contenedor-label-parrafo">
+                        {editarCbu ? <Editar tipo="Alias/CBU" idProp={datos.id}></Editar> : <div className="contenedor-label-parrafo">
                             <p>{datos.cbu}</p>
-                            <img height={24} src={imagenEditar} alt="" />
-                        </div>
+                            <img onClick={() => setEditarCbu(true)} height={24} src={imagenEditar} alt="editar" />
+                        </div>}
                     </div>
                 </div>
             </div>

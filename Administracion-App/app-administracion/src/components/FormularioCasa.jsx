@@ -1,6 +1,8 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const FormularioCasa = () => {
@@ -11,6 +13,8 @@ const FormularioCasa = () => {
     const [niz,setNiz] = useState();
     const [gas,setGas] = useState();
 
+    const navigate = useNavigate();
+
     const control = () =>{
     
         if(direccion == ""){
@@ -19,6 +23,18 @@ const FormularioCasa = () => {
 
       crearPropiedad();
     }
+
+    const notifySucces = () =>  toast.success("Propiedad Agregada", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        
+        })    
 
 const crearPropiedad = () =>{
    
@@ -32,14 +48,19 @@ const crearPropiedad = () =>{
 
     const db = getFirestore();
     const orderCollection = collection(db, "propiedades");
-    addDoc(orderCollection, propiedad).then(
-         
-    )
+    addDoc(orderCollection, propiedad).then(notifySucces())
+   
+    setTimeout(() =>{
+     
+        navigate("/propietario/"+ idPropietario)
+    },1500)
+
 }
 
     return (
 
         <>
+         <ToastContainer/>
             <div className="container">
                 <h1 className="text-center my-5">Agregar Propiedad</h1>
                 <form action="" className="container">

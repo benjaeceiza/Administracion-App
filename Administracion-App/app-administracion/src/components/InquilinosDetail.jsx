@@ -50,12 +50,16 @@ const InquilinosDetail = () => {
                         <BotonEliminarInquilino idprop={inquilino.idprop} />
                     </div>
                     <div className="row text-center my-5 align-items-center ">
-                        <div className="col">
+                        <div className="col ">
                             <FotoNombreInqui inquilino={inquilino} />
                         </div>
                         <div className="col">
                             <h2>Datos</h2>
                             <DatosInquilinos datos={inquilino} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col pagos">
                         </div>
                     </div>
                 </div>

@@ -4,17 +4,33 @@
   font-family: sans-serif;
 }
 
+body{
+  position: relative;
+  padding-bottom: 40px ;
+  min-height: 100vh;
+}
+
+/* SPINNER DE CARGA*/
+
 .cargando {
   width: 100%;
 
 }
 
 
-
-.spinner-border {
-  margin-top: 270px;
+.spinner-general{
+  margin-top: 40vh;
 }
 
+.spinner-inquilino-propiedades{
+
+  min-height: 100px;
+
+}
+
+.margin-spinner-inquilino-propiedades{
+  margin-top: 4%;
+}
 
 
 
@@ -30,13 +46,18 @@ justify-content: space-between;
   
 }
 
+
 .largo{
 
  min-height: 80px;
  padding: 20px 10px;
+ 
 
 }
 
+.relativo{
+  position: relative;
+}
 
 .navbar-expand-lg .navbar-collapse {
 
@@ -46,7 +67,7 @@ justify-content: space-between;
 
 
 .logo {
-  height: 50px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -96,6 +117,11 @@ justify-content: space-between;
   color: white;
 }
 
+.opacidad:hover{
+
+box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
+}
+
 
 /* PROPIETARIO DETAIL */
 .contenedor-propietario-detail{
@@ -116,6 +142,12 @@ justify-content: space-between;
   margin: auto;
 }
 
+.boton-editar-foto-nombre{
+  width: 250px;
+  margin: auto;
+  text-align: start;
+}
+
 .contenedor-foto-nombre {
   border: solid 1px black;
   width: 300px;
@@ -131,7 +163,7 @@ justify-content: space-between;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 90%; 
-  margin: 40px auto;
+  margin: 0px auto 40px auto;
 
 }
 
@@ -189,6 +221,11 @@ justify-content: space-between;
 
   background-color: rgb(168, 168, 168);
 }
+.pagos{
+  border: 1px solid black;
+  height: 100px;
+  width: 50%;  
+}
 
 /* Formulario inquilino*/
 
@@ -210,4 +247,16 @@ justify-content: space-between;
 .validacion-error {
   border: rgb(223, 114, 114), 2px solid;
   box-shadow: 0px 0px 10px 1px rgb(245, 110, 110);
+}
+
+
+/* FOOTER */
+
+.footer{
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  background-color: rgb(25,135,84);
+  bottom: 0;
+
 }

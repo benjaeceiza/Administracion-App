@@ -10,6 +10,8 @@ import AgregarInquilino from "./components/AgregarInquilino"
 import AgregarPropietario from "./components/AgregarPropietario"
 import FormularioCasa from "./components/FormularioCasa"
 import Buscados from "./components/Buscados"
+import Footer from "./components/Footer"
+import ContextProvider from "./components/contexto/Context"
 
 
 
@@ -19,21 +21,23 @@ function App() {
 
   return (
     <>
-    
-    <BrowserRouter>
-      <Navbar/>
-      <Routes>
-      <Route path="/" element={<Inicio/>}/>
-      <Route path="/propietarios" element={<ListadoPropietarios/>}/>
-      <Route path="/inquilinos" element={<ListadoIquilinos/>}/>
-      <Route path="/propietario/:id" element={<PropietariosDetail/>}/>
-      <Route path="/inquilino/:idInquilino" element={<InquilinosDetail/>}/>
-      <Route path="/agregar/inquilino/:idInquilino" element={<AgregarInquilino/>}/>
-      <Route path="/agregar/propietario" element={<AgregarPropietario/>}/>
-      <Route path="/agregar/propiedad/:idPropietario" element={<FormularioCasa/>}/>
-      <Route path="/buscar/:nombreBuscado" element={<Buscados/>}/>
-      </Routes>
-    </BrowserRouter>
+      <ContextProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/propietarios" element={<ListadoPropietarios />} />
+            <Route path="/inquilinos" element={<ListadoIquilinos />} />
+            <Route path="/propietario/:id" element={<PropietariosDetail />} />
+            <Route path="/inquilino/:idInquilino" element={<InquilinosDetail />} />
+            <Route path="/agregar/inquilino/:idInquilino" element={<AgregarInquilino />} />
+            <Route path="/agregar/propietario" element={<AgregarPropietario />} />
+            <Route path="/agregar/propiedad/:idPropietario" element={<FormularioCasa />} />
+            <Route path="/buscar/:nombreBuscado" element={<Buscados />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ContextProvider>
     </>
   )
 }

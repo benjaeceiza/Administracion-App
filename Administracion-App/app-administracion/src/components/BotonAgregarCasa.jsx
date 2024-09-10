@@ -10,7 +10,7 @@ import logoMas from "../assets/mas.png"
         <>
          <div className="contenedor-botones text-start">
      
-             <Link to ={"/agregar/propiedad/" +idPropietario}>< img  height={30} src={logoMas} alt="agregar Propiedad" className="my-3" /></Link>
+             <Link to ={"/agregar/propiedad/" +idPropietario}>< img  height={25} src={logoMas} alt="agregar Propiedad" className="my-3" /></Link>
           
          </div>
         </>

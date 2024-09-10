@@ -39,7 +39,7 @@ const ListadoPropietarios = () => {
         <h1 className="text-center">Listado de Propietarios</h1>
         <BotonAgregar />
         </div>
-        <div className="contenedor-propietarios text-center ">
+        <div className="contenedor-propietarios text-center">
           <Propietarios propietario={propietario} />
         </div>
       </div>

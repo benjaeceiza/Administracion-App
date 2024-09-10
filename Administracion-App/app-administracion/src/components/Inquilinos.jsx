@@ -28,49 +28,56 @@ const inquilinos = (id) => {
       if (Snapshot.size > 0) {
 
         setArrayInquilinos(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
-        
+
       } else {
         console.error("error")
       }
     })
-    
-    
+
+
   }, [])
-  
+
   setTimeout(() => {
-    
+
     setInquilino(arrayInquilinos.filter(e => e.idprop == id.idPropietario))
+
+
+
+  }, 1)
+  setTimeout(() => {
+
     setCargador(false)
-    
-    
-  },1)
-  
-  
-  if(inquilino.length == 0 ){
-    return(
-      <div className="contenedor-inqui">
-        <h3 className="my-3">Sin Inquilinos</h3>
-      </div>
+
+
+  }, 2000)
+
+
+  if (inquilino.length == 0) {
+    return (
+      <>
+        {cargador ? <CargandoInquilinos /> : <div className="contenedor-inqui">
+          <h3 className="my-3">Sin Inquilinos</h3>
+        </div>}
+      </>
     )
   }
 
- 
+
 
   return (
 
     <>
-        
-        <div className="contenedor-inqui">
-          {cargador ? <CargandoInquilinos/>:
-            inquilino.map(e => (
-              <div className="img-nombre"key={e.id} > 
-                <Link to={"/inquilino/" + e.id}><img height={100} src={imagenUsuario} alt="" /></Link>
-                <p>{e.apellido} {e.nombre}</p>
-              </div>
-            ))
-          }
 
-        </div>
+      {cargador ? <CargandoInquilinos /> :
+        <div className="contenedor-inqui">
+          {inquilino.map(e => (
+          <div className="img-nombre" key={e.id} >
+            <Link to={"/inquilino/" + e.id}><img height={100} src={imagenUsuario} alt="" /></Link>
+            <p>{e.apellido}</p>
+          </div>
+          ))}
+          </div>}
+
 
     </>
   )
