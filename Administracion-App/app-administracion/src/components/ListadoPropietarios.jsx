@@ -34,6 +34,7 @@ const ListadoPropietarios = () => {
 
   return (
     <>{cargando ? <Cargando /> :
+      
       <div className="container my-5">
         <div className="titulo-boton">
         <h1 className="text-center">Listado de Propietarios</h1>

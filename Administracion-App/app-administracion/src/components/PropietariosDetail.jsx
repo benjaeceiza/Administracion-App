@@ -83,7 +83,7 @@ const PropietariosDetail = () => {
                         </div>
                         <div className="col my-5">
                             <h2>Datos</h2>
-                            <Datos datos={propietario} />
+                            <Datos datos={propietario} id={id} />
                         </div>
                     </div>
                     <div className="contenedor-propiedades-inquilinos">

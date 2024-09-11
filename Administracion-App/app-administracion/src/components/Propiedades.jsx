@@ -1,7 +1,6 @@
 import { collection, deleteDoc, doc, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { renderMatches, useParams } from "react-router-dom";
-import Cargando from "./Cargando";
+import {useParams } from "react-router-dom";
 import tacho from "../assets/eliminar.png"
 import CargandoInquilinos from "./CargandoInquilinos";
 
@@ -12,8 +11,7 @@ const Propiedades = () => {
     const [filtroPropiedades, setFiltroPropiedades] = useState([]);
     const { id } = useParams()
     const [cargador, setCargador] = useState(true);
-
-
+    
 
     useEffect(() => {
 
@@ -26,33 +24,41 @@ const Propiedades = () => {
             if (Snapshot.size >= 0) {
 
                 setPropiedades(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
-
+                
             } else {
                 console.error("error")
             }
+
+           
         })
-
-
+        
+        
+        
     }, [])
+    
 
     const eliminarPropiedad = (idPropiedad) => {
-
         const db = getFirestore();
-        const docRef = doc(db, "propiedades", idPropiedad)
-       
-        deleteDoc(docRef)
+        const docRef = doc(db, "propiedades", idPropiedad);
+        
+        deleteDoc(docRef).then(
+           
+        )
+        
     }
 
 
+  
+    
+    setTimeout(() => {
+      
+        setFiltroPropiedades(propiedades.filter(e => e.idprop == id))
+    }, 1)
+    
 
-        setTimeout(() => {
-
-            setFiltroPropiedades(propiedades.filter(e => e.idprop == id))
-        }, 1)
- 
 
     setTimeout(() => {
-
+    
         setCargador(false)
     }, 1000)
 
@@ -63,7 +69,7 @@ const Propiedades = () => {
         return (
             <>
                 {cargador ? <CargandoInquilinos /> : <div className="contenedor-propiedades text-center">
-                    <h3 className="my-3"> Sin Propiedades Cargadas</h3>
+                    <h5 className="my-3"> SIN PROPIEDADES CARGADAS</h5>
                 </div>}
             </>
         )

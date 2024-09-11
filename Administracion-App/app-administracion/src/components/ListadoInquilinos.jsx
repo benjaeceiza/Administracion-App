@@ -50,7 +50,7 @@ const ListadoIquilinos = () => {
           {inquilinos.map(e => (
             <div key={e.id} className="col-3 my-5 ancho opacidad">
               <Link to={"/inquilino/" + e.id}><img src={imagen} alt={e.nombre} /></Link>
-              <div className="fondo-nombre">
+              <div className="fondo-nombre-inqui">
                 <p className="my-3 nombre">{e.apellido} {e.nombre}</p>
               </div>
 
