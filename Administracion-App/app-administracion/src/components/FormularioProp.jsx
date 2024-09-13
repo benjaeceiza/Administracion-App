@@ -174,7 +174,7 @@ const FormularioProp = () => {
                         <input type="text" className={"form-control " + (error6 ? "validacion-error" : " ")} placeholder="Alias/CBU" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setCbuProp(e.target.value) }} />
                     </div>
                 </form>
-                    <button className="btn btn-primary centro" onClick={control} >Agregar</button>
+                    <button className="btn btn-primary centro boton-form" onClick={control} >Agregar</button>
             </div>
         </>
     )

@@ -241,7 +241,7 @@ const FormularioInquilino = () => {
 
                 </form>
 
-                <button className="btn btn-primary centro" onClick={control} >Agregar</button>
+                <button className="btn btn-primary centro boton-form" onClick={control} >Agregar</button>
             </div>
         </>
     )

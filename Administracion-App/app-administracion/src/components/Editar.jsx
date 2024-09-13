@@ -70,13 +70,14 @@ const Editar = () => {
     }
 
     const control = () => {
-       
+
         if (nombre == "") {
-          setNombre(propietario.nombre)
+            setNombre(propietario.nombre)
         }
 
         if (apellido == "") {
-          setApellido(propietario.apellido)
+           
+            setApellido(propietario.apellido)
         }
         if (telefono == "") {
             setTelefono(propietario.telefono)
@@ -91,56 +92,70 @@ const Editar = () => {
             setCbu(propietario.cbu)
         }
 
-        enviar();
+        crear();
+    }
+    
+    const crear  = () =>{
+       const prop = {
+         nombre:nombre,
+         apellido:apellido,
+         telefono:telefono,
+         email:email,
+         cuit:cuit,
+         cbu:cbu
+       }
+      
+       enviar(prop)
     }
 
-         
 
-const enviar = () => {
-    alert("entra")
-    const db = getFirestore();
-    const docRef = doc(db, "propietarios", id)
-    updateDoc(docRef,{nombre:nombre,apellido:apellido,telefono:telefono,email:email,cuit:cuit,cbu:cbu})
-}
+    const enviar = (prop) => {
+        console.log(prop)
+        const db = getFirestore();
+        const docRef = doc(db, "propietarios", id)
+        updateDoc(docRef, prop)
+        
+       
+    }
 
 
-return (
-    <>
-        <div className="container my-5">
-            <div className="row text-center">
-                <div className="col">
-                    <div className="">
-                        <div className="input-group mb-3">
-                            {mostrarNombre ? <p onClick={() => cambiar("nombre")} className="form-control text-start">{propietario.nombre}</p> :
-                                <input type="text" className="form-control " placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setNombre(e.target.value) }} />}
+    return (
+        <>
+            <div className="container my-5">
+                <div className="row text-center">
+                    <div className="col">
+                        <div className="">
+                            <div className="input-group mb-3">
+                                {mostrarNombre ? <p onClick={() => cambiar("nombre")} className="form-control text-start">{propietario.nombre}</p> :
+                                    <input type="text" className="form-control " placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setNombre(e.target.value) }} />}
+                            </div>
+                            <div className="input-group mb-3">
+                                {mostrarApellido ? <p onClick={() => cambiar("apellido")} className="form-control text-start">{propietario.apellido}</p> :
+                                    <input type="text" className="form-control " placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setApellido(e.target.value) }} />}
+                            </div>
+                            <div className="input-group mb-3">
+                                {mostrarTelefono ? <p onClick={() => cambiar("telefono")} className="form-control text-start">{propietario.telefono}</p> :
+                                    <input type="text" className="form-control " placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setTelefono(e.target.value) }} />}
+                            </div>
+                            <div className="input-group mb-3">
+                                {mostrarEmail ? <p onClick={() => cambiar("email")} className="form-control text-start">{propietario.email}</p> :
+                                    <input type="text" className="form-control " placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setEmail(e.target.value) }} />}
+                            </div>
+                            <div className="input-group mb-3">
+                                {mostrarCuit ? <p onClick={() => cambiar("cuit")} className="form-control text-start">{propietario.cuit}</p> :
+                                    <input type="text" className="form-control " placeholder="Dni/Cuit/Cuil" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setCuit(e.target.value) }} />}
+                            </div>
+                            <div className="input-group mb-3">
+                                {mostrarCbu ? <p onClick={() => cambiar("cbu")} className="form-control text-start">{propietario.cbu}</p> :
+                                    <input type="text" className="form-control" placeholder="Alias/Cbu" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setCbu(e.target.value) }} />}
+                            </div>
                         </div>
-                        <div className="input-group mb-3">
-                            {mostrarApellido ? <p onClick={() => cambiar("apellido")} className="form-control text-start">{propietario.apellido}</p> :
-                                <input type="text" className="form-control " placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setApellido(e.target.value) }} />}
-                        </div>
-                        <div className="input-group mb-3">
-                            {mostrarTelefono ? <p onClick={() => cambiar("telefono")} className="form-control text-start">{propietario.telefono}</p> :
-                                <input type="text" className="form-control " placeholder="Telefono" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setTelefono(e.target.value) }} />}
-                        </div>
-                        <div className="input-group mb-3">
-                            {mostrarEmail ? <p onClick={() => cambiar("email")} className="form-control text-start">{propietario.email}</p> :
-                                <input type="text" className="form-control " placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setEmail(e.target.value) }} />}
-                        </div>
-                        <div className="input-group mb-3">
-                            {mostrarCuit ? <p onClick={() => cambiar("cuit")} className="form-control text-start">{propietario.cuit}</p> :
-                                <input type="text" className="form-control " placeholder="Dni/Cuit/Cuil" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setCuit(e.target.value) }} />}
-                        </div>
-                        <div className="input-group mb-3">
-                            {mostrarCbu ? <p onClick={() => cambiar("cbu")} className="form-control text-start">{propietario.cbu}</p> :
-                                <input type="text" className="form-control" placeholder="Alias/Cbu" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setCbu(e.target.value) }} />}
-                        </div>
+                        <button onClick={() => control()} className="btn btn-primary">OK</button>
                     </div>
-                    <button onClick={() => control()} className="btn btn-primary">OK</button>
                 </div>
             </div>
-        </div>
-    </>
-)
+        </>
+    )
 }
 
 export default Editar

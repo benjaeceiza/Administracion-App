@@ -77,7 +77,7 @@ const crearPropiedad = () =>{
                         <input type="text" className={"form-control"} placeholder="Número Cuenta Gas" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setGas(e.target.value) }} />
                     </div>
                 </form>
-                 <button className="btn btn-primary centro" onClick={control}>Agregar</button>
+                 <button className="btn btn-primary centro boton-form" onClick={control}>Agregar</button>
             </div>
         </>
     )
