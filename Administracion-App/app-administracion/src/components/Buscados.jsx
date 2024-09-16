@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Cargando from "./Cargando";
-import imagenUsuario from "../assets/usuario.png"
+import imagenUsuarioProp from "../assets/corona.png"
+import imagenUsuarioInqui from "../assets/ajedrez (1).png"
 
 
 const Buscados = () => {
@@ -140,29 +141,29 @@ const Buscados = () => {
                     <div className="container">
                         <h1 className="text-center my-5">Resultados de: {nombreBuscado}</h1>
                         <div className="row">
-                        <div className={existe ? "":"col my-5"}>
-                                {buscados.map(e => (
-                                    <div key={e.id} className="mg ancho text-center opacidad">
-                                        <Link to={"/propietario/" + e.id}><img src={imagenUsuario} alt="" /></Link>
+                            {buscados.map(e => (
+                                <div key={e.id} className={existe ? "" : "col my-5"}>
+                                    <div  className="mg ancho text-center opacidad">
+                                        <Link to={"/propietario/" + e.id}><img src={imagenUsuarioProp} alt="" /></Link>
                                         <div className="nombre fondo-nombre">
                                             <p className="my-3 nombre"> {e.apellido} {e.nombre}</p>
                                         </div>
                                     </div>
 
-                                ))}
-                            </div>
-                            <div className={existe2 ? "":"col my-5"}>
-                                {buscadosInqui.map(e => (
-                                    <div key={e.id} className="mg ancho text-center opacidad">
-                                        <Link to={"/inquilino/" + e.id}><img src={imagenUsuario} alt="" /></Link>
+                                </div>
+                            ))}
+                            {buscadosInqui.map(e => (
+                                <div key={e.id} className={existe2 ? "" : "col my-5"}>
+                                    <div className="mg ancho text-center opacidad tamano">
+                                        <Link to={"/inquilino/" + e.id}><img src={imagenUsuarioInqui} alt="" /></Link>
                                         <div className="nombre fondo-nombre-inqui">
                                             <p className="my-3 nombre"> {e.apellido} {e.nombre}</p>
                                         </div>
                                     </div>
 
-                                ))}
+                                </div>
+                            ))}
 
-                            </div>
                         </div>
 
                     </div>}

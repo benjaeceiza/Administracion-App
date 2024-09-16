@@ -1,4 +1,4 @@
-import foto from "../assets/usuario.png"
+import foto from "../assets/corona.png"
 
 const FotoNombreProp = ({ propietario,imagen }) => {
 

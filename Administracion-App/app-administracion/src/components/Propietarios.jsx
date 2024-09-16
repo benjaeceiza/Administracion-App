@@ -1,6 +1,6 @@
 
 
-import imagenUsuario from "../assets/usuario.png"
+import imagenUsuario from "../assets/corona.png"
 import { Link } from "react-router-dom"
 
 

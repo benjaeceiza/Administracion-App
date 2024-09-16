@@ -93,11 +93,17 @@ justify-content: space-between;
 .ancho {
   width: 250px;
   margin: 0px 10px;
-  padding: 40px 0px 0px 0px;
+  overflow: hidden;
   border: 1px rgb(110, 110, 110) solid;
   border-radius: 20px;
 
+}
+.ancho img{
+ padding: 100px 0;
+}
 
+.tamano img{
+  padding: 75px 0px;
 }
 
 .mg {
@@ -105,7 +111,6 @@ justify-content: space-between;
 }
 
 .fondo-nombre {
-  margin-top: 50px;
   background-color: rgb(10, 167, 119);
   padding: 1px;
   border-end-end-radius: 20px;

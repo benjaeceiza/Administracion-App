@@ -1,11 +1,11 @@
 
-import foto from "../assets/usuario.png"
+import foto from "../assets/ajedrez (1).png"
 const FotoNombreInqui = ({ inquilino }) => {
 
   return (
     <>
 
-      <div key={inquilino.id} className="ancho mg">
+      <div key={inquilino.id} className="ancho mg tamano">
         <img src={foto} alt="" />
         <div className="nombre fondo-nombre-inqui">
           <p className="my-3 nombre"> {inquilino.apellido} {inquilino.nombre}</p>
