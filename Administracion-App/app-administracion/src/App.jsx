@@ -13,6 +13,7 @@ import Buscados from "./components/Buscados"
 import Footer from "./components/Footer"
 import ContextProvider from "./components/contexto/Context"
 import Editar from "./components/Editar"
+import EditarInquilino from "./components/EditarInquilino"
 
 
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/agregar/propiedad/:idPropietario" element={<FormularioCasa />} />
             <Route path="/buscar/:nombreBuscado" element={<Buscados />} />
             <Route path="/editar/:id" element={<Editar />} />
+            <Route path="/editar/inquilino/:idInquilino" element={<EditarInquilino />} />
           </Routes>
           <Footer />
         </BrowserRouter>

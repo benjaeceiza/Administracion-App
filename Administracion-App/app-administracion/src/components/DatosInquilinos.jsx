@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import imagenEditar from "../assets/boton-editar.png"
+import { Link } from "react-router-dom";
 
 
 const DatosInquilinos = ({ datos }) => {
@@ -26,7 +27,7 @@ const DatosInquilinos = ({ datos }) => {
 
             <div className="container contenedor-datos">
                 <div className="text-end">
-                    <img onClick={() => alert("editar")} height={24} src={imagenEditar} alt="" />
+                   <Link to ={"/editar/inquilino/"+datos.id}> <img  height={24} src={imagenEditar} alt="" /></Link>
                 </div>
                 <div className="row">
                     <div className="col">
