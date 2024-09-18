@@ -88,6 +88,7 @@ justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .ancho {
@@ -96,6 +97,7 @@ justify-content: space-between;
   overflow: hidden;
   border: 1px rgb(110, 110, 110) solid;
   border-radius: 20px;
+  
 
 }
 .ancho img{
@@ -115,6 +117,7 @@ justify-content: space-between;
   padding: 1px;
   border-end-end-radius: 20px;
   border-end-start-radius: 20px;
+  
 
 }
 
@@ -124,11 +127,13 @@ justify-content: space-between;
   padding: 1px;
   border-end-end-radius: 20px;
   border-end-start-radius: 20px;
+  
 
 }
 
 .nombre {
   color: white;
+  text-decoration-line:none;
 }
 
 .opacidad:hover{
@@ -236,13 +241,35 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
 .pagos{
   border: 1px solid black;
   height: 100px;
-  width: 50%;  
+  width: 50%;
+  min-width: 200px; 
+  margin:10px;
+  border-radius: 10px; 
 }
 
 /* Formulario inquilino*/
 
 .boton-form{
   margin-bottom: 50px;
+}
+
+.subtitulo{
+  margin-top: 30px;
+}
+.al-dia{
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 25px;
+  background-color: rgba(26, 214, 26, 0.719);
+  min-width: 200px; 
+}
+
+.no-al-dia{
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 25px;
+  background-color: rgba(247, 37, 0, 0.719);
+  min-width: 200px; 
 }
 
 
@@ -266,6 +293,14 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
 .validacion-error {
   border: rgb(223, 114, 114), 2px solid;
   box-shadow: 0px 0px 10px 1px rgb(245, 110, 110);
+}
+
+/* ALQUILERES */
+
+.alquiler-al-dia{
+  border: solid 1px black;
+  width: 80%;
+  margin:  0px auto;
 }
 
 

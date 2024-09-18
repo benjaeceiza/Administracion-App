@@ -75,9 +75,7 @@ const PropietariosDetail = () => {
                     </div>
                     <div className="contenedor-datos-fotonombre">
                         <div className="col my-5">
-                            <div className="boton-editar-foto-nombre">
-                                <img className="my-3" height={25} src={botonEditar} alt="Editar" />
-                            </div>
+                           
                             <FotoNombreProp propietario={propietario} imagen={imagen}/>
                             
                         </div>

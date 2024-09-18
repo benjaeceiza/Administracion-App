@@ -14,6 +14,7 @@ import Footer from "./components/Footer"
 import ContextProvider from "./components/contexto/Context"
 import Editar from "./components/Editar"
 import EditarInquilino from "./components/EditarInquilino"
+import Alquileres from "./components/Alquileres"
 
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/buscar/:nombreBuscado" element={<Buscados />} />
             <Route path="/editar/:id" element={<Editar />} />
             <Route path="/editar/inquilino/:idInquilino" element={<EditarInquilino />} />
+            <Route path="/alquileres" element={<Alquileres />} />
           </Routes>
           <Footer />
         </BrowserRouter>

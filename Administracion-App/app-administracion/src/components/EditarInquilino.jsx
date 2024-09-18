@@ -1,10 +1,11 @@
-import { doc, getDoc, getFirestore } from "firebase/firestore"
+import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
+import { useNavigate, useParams } from "react-router-dom"
 import DatePicker, { registerLocale } from "react-datepicker";
 import { es } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const EditarInquilino = () => {
@@ -13,6 +14,31 @@ const EditarInquilino = () => {
     const [inquilino, setInquilino] = useState([])
     const [vigencia, setVigencia] = useState({ fecha: "" });
     const [vencimiento, setVencimineto] = useState({ fecha: "" });
+    const navigate = useNavigate()
+
+    let valorVencimiento = { fecha: "" }
+    let valorVigencia = { fecha: "" }
+    let nombre = "";
+    let apellido = "";
+    let telefono = "";
+    let email = "";
+    let dni = "";
+    let direccion = "";
+    let aumento = "";
+    let monto = "";
+
+
+    const notifySucces = () => toast.success("Inquilino Editado!", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+
+    })
 
 
     useEffect(() => {
@@ -42,12 +68,98 @@ const EditarInquilino = () => {
 
     const onChangeVigencia = (fecha) => {
 
-        setVigencia({ fecha: fecha })
+        
+        valorVigencia = { fecha: fecha }
+        // setVigencia({ fecha: fecha })
+
+      
+        
+        
+    }
+    
+    const onChangeVencimiento = (fecha) => {
+        
+        valorVencimiento = { fecha: fecha }
+
+        // setVencimineto({ fecha: fecha })
+       
     }
 
-    const onChangeVencimiento = (fecha) => {
 
-        setVencimineto({ fecha: fecha })
+  
+
+    const control = () => {
+
+
+        if (nombre == "") {
+
+            nombre = inquilino.nombre
+        }
+
+        if (apellido == "") {
+
+            apellido = inquilino.apellido
+        }
+        if (telefono == "") {
+            telefono = inquilino.telefono
+        }
+        if (email == "") {
+            email = inquilino.email
+        }
+        if (dni == "") {
+            dni = inquilino.dni
+        }
+        if (direccion == "") {
+            direccion = inquilino.direccion
+        }
+        if (aumento == "") {
+            aumento = inquilino.aumento
+        }
+        if (valorVigencia.fecha == "") {
+
+            valorVigencia.fecha = inquilino.vigencia.fecha
+
+        }
+        if (valorVencimiento.fecha == "") {
+            valorVencimiento.fecha = inquilino.vencimiento.fecha
+        }
+        if (monto == "") {
+            monto = inquilino.monto
+        }
+
+        crear()
+
+    }
+
+    const crear = () => {
+
+        const inqui = {
+            nombre: nombre,
+            apellido: apellido,
+            telefono: telefono,
+            email: email,
+            dni: dni,
+            direccion: direccion,
+            aumento: aumento,
+            vencimiento: valorVencimiento,
+            vigencia: valorVigencia,
+            monto:monto
+        }
+
+
+
+        const db = getFirestore();
+        const docRef = doc(db, "inquilinos",idInquilino)
+        updateDoc(docRef, inqui).then(
+           notifySucces()
+        )
+        setTimeout(() => {
+          navigate("/inquilino/"+inquilino.id)
+        }, 1500)
+
+        console.log(inqui)
+        // console.log(inquilino.vencimiento.fecha.seconds)
+
     }
 
 
@@ -62,44 +174,48 @@ const EditarInquilino = () => {
                 <form className="container" >
                     <div className="input-group mb-3">
 
-                        <input type="text" className="form-control " placeholder={inquilino.nombre} aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setNombreInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.nombre} aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { nombre = (e.target.value) }} />
                     </div>
 
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.apellido} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setApellidoInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.apellido} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { apellido = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.telefono} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setTelefonoInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.telefono} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { telefono = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.email} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setEmailInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.email} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { email = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.dni} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setDniInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.dni} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { dni = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.direccion} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setDireccionInqui(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.direccion} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { direccion = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control " placeholder={inquilino.aumento} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setAumento(e.target.value) }} />
+                        <input type="text" className="form-control " placeholder={inquilino.aumento} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { aumento = (e.target.value) }} />
+
+                    </div>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control " placeholder={inquilino.monto} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { monto = (e.target.value) }} />
 
                     </div>
                     <div className="input-group mb-3 contenedor-fecha-label">
                         <label htmlFor="" className="">Vigencia</label>
-                        <DatePicker className="input-fecha" selected={0} onChange={onChangeVigencia} locale={"es"} dateFormat={"dd-MM-yyyy"} />
+                        <DatePicker className="input-fecha" selected={vigencia.fecha} onChange={onChangeVigencia} locale={"es"} dateFormat={"dd-MM-yyyy"} />
                     </div>
                     <div className="input-group mb-3 contenedor-fecha-label">
                         <label htmlFor="">Vencimiento</label>
-                        <DatePicker className="input-fecha" selected={0} onChange={onChangeVencimiento} locale={"es"} dateFormat={"dd-MM-yyyy"} />
+                        <DatePicker className="input-fecha" selected={vencimiento.fecha} onChange={onChangeVencimiento} locale={"es"} dateFormat={"dd-MM-yyyy"} />
                     </div>
 
                 </form>
-                <button className="btn btn-primary centro boton-form" onClick={() => alert("hola")} >Agregar</button>
+                <button className="btn btn-primary centro boton-form" onClick={() => control()} >OK</button>
             </div>
         </>
     )

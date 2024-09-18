@@ -59,7 +59,10 @@ const InquilinosDetail = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col pagos">
+                        <div className="col no-al-dia my-3">
+                            <h3 className="text-center subtitulo text-white">NO ESTA AL DIA</h3>
+                        </div>
+                        <div className="col pagos my-3">
                         </div>
                     </div>
                 </div>

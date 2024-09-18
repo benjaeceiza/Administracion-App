@@ -41,7 +41,7 @@ const Navbar = () => {
                                 <NavLink to={"/inquilinos"} className="nav-link text-white" href="#">Inquilinos</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={"#"} className="nav-link text-white" href="#">Alquileres</NavLink>
+                                <NavLink to={"/alquileres"} className="nav-link text-white" href="#">Alquileres</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to={"#"} className="nav-link text-white" href="#">Reclamos</NavLink>

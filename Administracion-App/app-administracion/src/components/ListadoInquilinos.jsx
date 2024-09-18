@@ -48,13 +48,12 @@ const ListadoIquilinos = () => {
         <h1 className="my-5 text-center">Listado de Inquilinos</h1>
         <div className="contenedor-propietarios text-center ">
           {inquilinos.map(e => (
-            <div key={e.id} className="col-3 my-5 ancho opacidad tamano">
-              <Link to={"/inquilino/" + e.id}><img src={imagen} alt={e.nombre} /></Link>
+            <Link key={e.id} to={"/inquilino/" + e.id} style={{textDecoration:"none"}}> <div  className="col-3 my-5 ancho opacidad tamano">
+              <img src={imagen} alt={e.nombre} />
               <div className="fondo-nombre-inqui">
                 <p className="my-3 nombre">{e.apellido} {e.nombre}</p>
               </div>
-
-            </div>
+            </div></Link>
           ))}
 
         </div>
