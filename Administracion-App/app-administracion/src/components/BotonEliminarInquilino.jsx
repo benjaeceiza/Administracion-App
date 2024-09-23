@@ -66,8 +66,8 @@ const BotonEliminarInquilino = ({idprop}) => {
 
         <>
         <ToastContainer/>
-             <div className="contenedor-botones text-center">
-                <button onClick={() => alerta()} className="btn btn-primary">Eliminar</button>
+             <div className="text-start my-3 ">
+                <button onClick={() => alerta()} className="mg-btn btn btn-primary">Eliminar</button>
             </div>
         </>
     )

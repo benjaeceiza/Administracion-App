@@ -143,6 +143,10 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
 
 
 /* PROPIETARIO DETAIL */
+
+.mg-btn{
+  margin-left: 80px;
+}
 .contenedor-propietario-detail{
   display: flex;
   width: 100%;
@@ -216,35 +220,45 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
   margin: 0px 15px;
 }
 
+.alinear{
+  align-items: center;
+}
 .contenedor-datos {
-
   border: solid 3px rgb(10,167,119);
-  padding: 20px;
+  padding: 20px 15px;
   border-radius: 20px;
   text-align: start;
   min-width: 250px;
   width: 90%;
+  margin: auto;
+}
+
+.col-datos{
+  width: 100%;
+  padding: 0px
+}
+.parrafo-datos{
+  background-color: rgba(224, 224, 224, 0.822);
+  padding: 10px 5px;
+  
+}
+
+.label-datos{
+  font-size: 13px;
 }
 
 /* INQUILINO DETAIL */
 
 
-.contenedor-label-parrafo {
-
- 
-}
-
 .contenedor-label-parrafo img:hover {
-
   background-color: rgb(168, 168, 168);
 }
 .pagos{
   border: 1px solid black;
-  height: 100px;
-  width: 50%;
   min-width: 200px; 
-  margin:10px;
-  border-radius: 10px; 
+  border-radius: 10px;
+  width: 90%; 
+  margin: auto;
 }
 
 /* Formulario inquilino*/
@@ -258,10 +272,12 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
 }
 .al-dia{
   border: 1px solid black;
-  margin: 10px;
+ 
   border-radius: 25px;
   background-color: rgba(26, 214, 26, 0.719);
-  min-width: 200px; 
+  min-width: 200px;
+  width: 90%; 
+  margin: auto;
 }
 
 .no-al-dia{
@@ -269,7 +285,8 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
   margin: 10px;
   border-radius: 25px;
   background-color: rgba(247, 37, 0, 0.719);
-  min-width: 200px; 
+  min-width: 200px;
+  width: 90%;  
 }
 
 
@@ -297,10 +314,83 @@ box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
 
 /* ALQUILERES */
 
+
+/* AL DIA */
 .alquiler-al-dia{
-  border: solid 1px black;
+  border: 3px solid rgb(8, 116, 17);
+  border-radius: 20px;
   width: 80%;
   margin:  0px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 0px;
+  background-color: rgb(89, 177, 93);
+  flex-wrap: wrap;
+}
+
+.alquiler-al-dia p{
+  width: 300px;
+  font-size: 20px;
+  color: white;
+
+}
+
+.alquiler-al-dia img{
+  border-radius: 100px;
+  box-shadow: 0px 0px 5px 2px;
+}
+
+
+/* PENDIENTE */
+
+.alquiler-no-al-dia{
+  border: 3px solid rgb(179, 5, 5);
+  border-radius: 20px;
+  width: 80%;
+  margin:  0px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 0px;
+  background-color: rgb(230, 108, 108);
+  flex-wrap: wrap;
+}
+
+.alquiler-no-al-dia p{
+  width: 300px;
+  font-size: 20px;
+  color: white;
+
+}
+
+.alquiler-no-al-dia img{
+  border-radius: 100px;
+  box-shadow: 0px 0px 5px 2px;
+}
+
+/* RECIBOS */
+
+.ancho-recibo{
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.recibo{
+  border: 1px solid black;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: rgb(233, 233, 233);
+ 
+}
+
+.mostrar-recibo{
+  min-width: 200px;
+  max-width: 1000px;
+  border: solid 1px black;
+  margin: auto;
+  padding: 10px 10px 10px 10px;
 }
 
 

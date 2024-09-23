@@ -83,7 +83,7 @@ const Propiedades = () => {
                             <tr>
                                 <th scope="col">Dirrección</th>
                                 <th scope="col">N° Finca</th>
-                                <th scope="col">N° Niz</th>
+                                <th scope="col">N° Nis</th>
                                 <th scope="col">N° Cta Gas</th>
                             </tr>
                         </thead>

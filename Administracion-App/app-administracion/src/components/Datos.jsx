@@ -2,13 +2,13 @@
 import { useNavigate } from "react-router-dom"
 import imagenEditar from "../assets/boton-editar.png"
 
-const Datos = ({ datos,id }) => {
- 
-    const navigate = useNavigate()
-  
-    const editar = () =>{
+const Datos = ({ datos, id }) => {
 
-        navigate("/editar/"+id)
+    const navigate = useNavigate()
+
+    const editar = () => {
+
+        navigate("/editar/" + id)
     }
 
     return (
@@ -18,24 +18,15 @@ const Datos = ({ datos,id }) => {
                     <img onClick={() => editar()} className="text-end" height={24} src={imagenEditar} alt="editar" />
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <div className="contenedor-label-parrafo">
-                            <label className="label-datos">Telefono:</label>
-                            <p>{datos.telefono}</p>
-                        </div>
-                        <div className="contenedor-label-parrafo">
-                            <label className="label-datos">Email:</label>
-                            <p>{datos.email}</p>
-                        </div>
-                        <div className="contenedor-label-parrafo">
-                            <label className="label-datos">DNI/CUIT/CUIL</label>
-                            <p>{datos.cuit}</p>
-                        </div>
-
-                        <div className="contenedor-label-parrafo">
-                            <label className="label-datos">Alias o CBU:</label>
-                            <p>{datos.cbu}</p>
-                        </div>
+                    <div className="col col-datos">
+                        <label className="label-datos">Telefono:</label>
+                            <p className="parrafo-datos">{datos.telefono}</p>
+                       <label className="label-datos">Email:</label>
+                            <p className="parrafo-datos">{datos.email}</p>
+                        <label className="label-datos">Dni/Cuit/Cuil:</label>
+                            <p className="parrafo-datos">{datos.cuit}</p>
+                        <label className="label-datos">Alias/Cbu:</label>
+                            <p className="parrafo-datos">{datos.cbu}</p>
                     </div>
                 </div>
             </div>

@@ -26,51 +26,28 @@ const DatosInquilinos = ({ datos }) => {
     return (
         <>
 
-            <div className="container contenedor-datos">
+            <div className="contenedor-datos">
                 <div className="text-end">
                    <Link to ={"/editar/inquilino/"+datos.id}> <img  height={24} src={imagenEditar} alt="" /></Link>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col col-datos">
                         <label className="label-datos">Teléfono:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{datos.telefono}</p>
-                        </div>
+                            <p className="parrafo-datos">{datos.telefono}</p>                   
                         <label className="label-datos">Email:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{datos.email}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{datos.email}</p>
                         <label className="label-datos">DNI:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{datos.dni}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{datos.dni}</p>
                         <label className="label-datos">Aumento:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{datos.aumento}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{datos.aumento}</p>
                         <label className="label-datos">Vigencia:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{vigencia}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{vigencia}</p>
                         <label className="label-datos">Vencimiento:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{vencimiento}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{vencimiento}</p>
                         <label className="label-datos">Dirección:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>{datos.direccion}</p>
-
-                        </div>
+                            <p className="parrafo-datos">{datos.direccion}</p>
                         <label className="label-datos">Monto:</label>
-                        <div className="contenedor-label-parrafo">
-                            <p>${montoFormateado}</p>
-
-                        </div>
+                            <p className="parrafo-datos">${montoFormateado}</p>
                     </div>
                 </div>
             </div>

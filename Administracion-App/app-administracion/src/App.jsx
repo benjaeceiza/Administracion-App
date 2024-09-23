@@ -14,7 +14,10 @@ import Footer from "./components/Footer"
 import ContextProvider from "./components/contexto/Context"
 import Editar from "./components/Editar"
 import EditarInquilino from "./components/EditarInquilino"
-import Alquileres from "./components/Alquileres"
+import AlquileresPendientes from "./components/AlquileresPendientes"
+import AlquileresAlDia from "./components/AlquileresAlDia"
+import Recibos from "./components/Recibos"
+import VerRecibos from "./components/VerRecibos"
 
 
 
@@ -39,7 +42,10 @@ function App() {
             <Route path="/buscar/:nombreBuscado" element={<Buscados />} />
             <Route path="/editar/:id" element={<Editar />} />
             <Route path="/editar/inquilino/:idInquilino" element={<EditarInquilino />} />
-            <Route path="/alquileres" element={<Alquileres />} />
+            <Route path="/alquileres/pendientes" element={<AlquileresPendientes/>} />
+            <Route path="/alquileres/aldia" element={<AlquileresAlDia/>} />
+            <Route path="/recibos" element={<Recibos/>} />
+            <Route path="/recibos/verrecibos" element={<VerRecibos/>} />
           </Routes>
           <Footer />
         </BrowserRouter>

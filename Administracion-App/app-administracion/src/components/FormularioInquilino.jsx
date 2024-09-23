@@ -164,7 +164,8 @@ const FormularioInquilino = () => {
             aumento: aumento,
             vigencia: vigencia,
             vencimiento: vencimiento,
-            idprop: idInquilino
+            idprop: idInquilino,
+            alquiler:false
 
         }
 

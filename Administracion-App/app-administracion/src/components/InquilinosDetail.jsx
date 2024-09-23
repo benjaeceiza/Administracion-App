@@ -6,6 +6,8 @@ import DatosInquilinos from "./DatosInquilinos";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import Cargando from "./Cargando";
 import BotonEliminarInquilino from "./BotonEliminarInquilino";
+import Aldia from "./Aldia";
+import Pendiente from "./Pendiente";
 
 
 const InquilinosDetail = () => {
@@ -44,25 +46,22 @@ const InquilinosDetail = () => {
     return (
         <>
             {cargador ? <Cargando /> :
-                <div className="container">
-                    <div className="titulo-boton">
-                        <h1 className="text-center my-4">Inquilino</h1>
+                <div className="contenedor-propietarios-detail">
                         <BotonEliminarInquilino idprop={inquilino.idprop} />
-                    </div>
-                    <div className="row text-center my-5 align-items-center ">
-                        <div className="col ">
+                    <div className="contenedor-datos-fotonombre alinear">
+                        <div className="col my-5">
                             <FotoNombreInqui inquilino={inquilino} />
                         </div>
-                        <div className="col">
-                            <h2>Datos</h2>
+                        <div className="col my-5">
                             <DatosInquilinos datos={inquilino} />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col no-al-dia my-3">
-                            <h3 className="text-center subtitulo text-white">NO ESTA AL DIA</h3>
-                        </div>
-                        <div className="col pagos my-3">
+                    <div className="contenedor-propiedades-inquilinos">
+                        {inquilino.alquiler ? <Aldia inquilino={inquilino}/> : <Pendiente inquilino={inquilino}/>}
+                        <div className="col my-5">
+                             <div className="pagos">
+                                 <h3 className="text-center my-4">Recibos De inqulino</h3>
+                             </div> 
                         </div>
                     </div>
                 </div>

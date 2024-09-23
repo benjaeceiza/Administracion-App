@@ -69,18 +69,12 @@ const PropietariosDetail = () => {
         <>
             {cargador ? <Cargando /> :
                 <div className=" contenedor-propietario-detail">
-                    <div className="titulo-boton">
-                        <h1 className="text-center my-4">Propietario</h1>
                         <BotonEliminar propietario={id} inquilinos={inquilinosAgrupado} />
-                    </div>
                     <div className="contenedor-datos-fotonombre">
                         <div className="col my-5">
-                           
                             <FotoNombreProp propietario={propietario} imagen={imagen}/>
-                            
                         </div>
                         <div className="col my-5">
-                            <h2>Datos</h2>
                             <Datos datos={propietario} id={id} />
                         </div>
                     </div>

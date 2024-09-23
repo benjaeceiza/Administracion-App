@@ -41,10 +41,10 @@ const Navbar = () => {
                                 <NavLink to={"/inquilinos"} className="nav-link text-white" href="#">Inquilinos</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={"/alquileres"} className="nav-link text-white" href="#">Alquileres</NavLink>
+                                <NavLink to={"/alquileres/pendientes"} className="nav-link text-white" href="#">Alquileres</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={"#"} className="nav-link text-white" href="#">Reclamos</NavLink>
+                                <NavLink to={"/recibos"} className="nav-link text-white" href="#">Recibos</NavLink>
                             </li>
 
                             <li className="nav-item">
