@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom"
+import agregarImagen from "../assets/agregar-usuario.png"
 
 const BotonAgregar = () =>{
 
   return(
    <>
-    <div className="contenedor-botones my-5 text-center">
-
-        <Link to ={"/agregar/propietario"} ><button className="btn btn-primary">Agregar</button></Link>
-     
-    </div>
+         <Link to ={"/agregar/propietario"}><img className="mouse" height={50} src={agregarImagen} alt="Agregar Propietario"/></Link>
    </>
 
   )

@@ -24,8 +24,9 @@ const FormularioInquilino = () => {
     const [dniInqui, setDniInqui] = useState(0);
     const [direccionInqui, setDireccionInqui] = useState("");
     const [aumento, setAumento] = useState("");
-    const [vigencia, setVigencia] = useState({ fecha: "" });
-    const [vencimiento, setVencimineto] = useState({ fecha: ""});
+    const [vigencia, setVigencia] = useState({ fecha: new Date() });
+    const [vencimiento, setVencimineto] = useState({ fecha: new Date() });
+    const [monto, setMonto] = useState(0);
     const formulario = useRef()
     const [error, setError] = useState(false);
     const [error2, setError2] = useState(false);
@@ -60,7 +61,7 @@ const FormularioInquilino = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
+    });
 
 
 
@@ -75,7 +76,10 @@ const FormularioInquilino = () => {
         setVencimineto({ fecha: fecha })
     }
 
-
+    const cambioAjuste = (e) =>{
+     
+        setAumento(e.target.value)
+    }
 
 
 
@@ -123,24 +127,31 @@ const FormularioInquilino = () => {
                                         setError6(true)
                                     } else {
                                         if (aumento == "") {
-                                            const texto = "Ingrese el tipo de Aumento"
+                                            const texto = "Ingrese el tipo de Ajuste"
                                             notify(texto)
                                             setError7(true)
                                         } else {
-                                            if (vigencia == "") {
-                                                const texto = "Ingrese la Vigencia"
+                                            if (isNaN(monto) || monto == "") {
+                                                const texto = "Ingrese un Número valido"
                                                 notify(texto)
                                                 setError8(true)
                                             } else {
-                                                if (vencimiento == "") {
-                                                    const texto = "Ingrese el Vencimiento"
+                                                if (vigencia == "") {
+                                                    const texto = "Ingrese la Vigencia"
                                                     notify(texto)
-                                                    setError9(true)
+                                                    setError8(true)
                                                 } else {
+                                                    if (vencimiento == "") {
+                                                        const texto = "Ingrese el Vencimiento"
+                                                        notify(texto)
+                                                        setError9(true)
+                                                    } else {
 
-                                                    crearInquilino();
+                                                        crearInquilino();
 
+                                                    }
                                                 }
+
                                             }
                                         }
                                     }
@@ -165,7 +176,8 @@ const FormularioInquilino = () => {
             vigencia: vigencia,
             vencimiento: vencimiento,
             idprop: idInquilino,
-            alquiler:false
+            monto: monto,
+            alquiler: false
 
         }
 
@@ -173,9 +185,9 @@ const FormularioInquilino = () => {
         const db = getFirestore();
         const orderCollection = collection(db, "inquilinos");
         addDoc(orderCollection, inquilino).then(
-           
+
             notifySucces()
-            
+
         )
         formulario.current.reset()
 
@@ -183,15 +195,16 @@ const FormularioInquilino = () => {
         setAumento("")
         setNombreInqui("")
         setDireccionInqui("")
-        setDniInqui("")
+        setDniInqui(0)
+        setMonto(0)
         setEmailInqui("")
-        setTelefonoInqui("")
+        setTelefonoInqui(0)
         setVencimineto({ fecha: "" })
         setVigencia({ fecha: "" })
-        setTimeout(()=>{
-            navigate("/propietario/"+ idInquilino)
+        setTimeout(() => {
+            navigate("/propietario/" + idInquilino)
 
-        },1500)
+        }, 1500)
     }
 
 
@@ -200,49 +213,60 @@ const FormularioInquilino = () => {
 
         <>
             <ToastContainer />
-            <div className="continer">
+            <div className="container formulario">
                 <form className="container" ref={formulario} >
-                    <div className="input-group mb-3">
-
+                    <div className="mb-3">
+                        <label className="label-datos">Nombre</label>
                         <input type="text" className={"form-control " + (error ? "validacion-error" : " ")} placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setNombreInqui(e.target.value) }} />
                     </div>
-
-                    <div className="input-group mb-3">
-                        <input type="text"className={"form-control " + (error2 ? "validacion-error" : " ")} placeholder="Apellido" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setApellidoInqui(e.target.value) }} />
-
+                    <div className="mb-3">
+                        <label className="label-datos">Apellido</label>
+                        <input type="text" className={"form-control " + (error2 ? "validacion-error" : " ")} placeholder="Apellido" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setApellidoInqui(e.target.value) }} />
                     </div>
-                    <div className="input-group mb-3">
+                    <div className="mb-3">
+                        <label className="label-datos">Telefono</label>
                         <input type="text" className={"form-control " + (error3 ? "validacion-error" : " ")} placeholder="Telefono" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setTelefonoInqui(e.target.value) }} />
-
                     </div>
-                    <div className="input-group mb-3">
+                    <div className="mb-3">
+                        <label className="label-datos">Email</label>
                         <input type="text" className={"form-control " + (error4 ? "validacion-error" : " ")} placeholder="Correo Electronico" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setEmailInqui(e.target.value) }} />
-
                     </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className={"form-control " + (error5 ? "validacion-error" : " ")} placeholder="DNI" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setDniInqui(e.target.value) }} />
-
+                    <div className="mb-3">
+                        <label className="label-datos">Dni</label>
+                        <input type="text" className={"form-control " + (error5 ? "validacion-error" : " ")} placeholder="Dni" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setDniInqui(e.target.value) }} />
                     </div>
-                    <div className="input-group mb-3">
+                    <div className="mb-3">
+                        <label className="label-datos">Dirección</label>
                         <input type="text" className={"form-control " + (error6 ? "validacion-error" : " ")} placeholder="Direccion del Inmbueble" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setDireccionInqui(e.target.value) }} />
-
                     </div>
-                    <div className="input-group mb-3">
-                        <input type="text" className={"form-control " + (error7 ? "validacion-error" : " ")} placeholder="Aumento" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setAumento(e.target.value) }} />
-
+                    <div className="mb-3">
+                        <label className="label-datos">Ajuste</label>
+                        <select className="form-select" aria-label="Default select example" onChange={cambioAjuste}>
+                            <option value="">Seleccione el tipo de ajuste</option>
+                            <option value= "Bimestral">Bimestral</option>
+                            <option value= "Trimestral">Trimestral</option>
+                            <option value= "Cuatrimestral">Cuatrimestral</option>
+                            <option value= "Semestral">Semestral</option>
+                            <option value= "Anual">Anual</option>
+                        </select>
                     </div>
-                    <div className="input-group mb-3 contenedor-fecha-label">
-                        <label htmlFor="" className="">Vigencia</label>
+                    <div className="mb-3">
+                        <label className="label-datos">Monto</label>
+                        <input type="text" className={"form-control " + (error8 ? "validacion-error" : " ")} placeholder="Monto" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setMonto(e.target.value) }} />
+                    </div>
+                    <div className="mb-3 contenedor-fecha-label">
+                        <label className="label-datos">Vigencia</label>
                         <DatePicker className="input-fecha" selected={vigencia.fecha} onChange={onChangeVigencia} locale={"es"} dateFormat={"dd-MM-yyyy"} />
                     </div>
-                    <div className="input-group mb-3 contenedor-fecha-label">
-                        <label htmlFor="">Venciimiento</label>
+                    <div className="mb-3 contenedor-fecha-label">
+                        <label className="label-datos">Vencimiento</label>
                         <DatePicker className="input-fecha" selected={vencimiento.fecha} onChange={onChangeVencimiento} locale={"es"} dateFormat={"dd-MM-yyyy"} />
                     </div>
 
                 </form>
-
-                <button className="btn btn-primary centro boton-form" onClick={control} >Agregar</button>
+                <div className="text-center">
+                    <button className="btn btn-primary " onClick={control} >Agregar</button>
+                </div>
             </div>
         </>
     )

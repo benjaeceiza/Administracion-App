@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import borrarImagen from "../assets/quitar-usuario.png"
 
 
 const BotonEliminarInquilino = ({idprop}) => {
@@ -66,8 +67,8 @@ const BotonEliminarInquilino = ({idprop}) => {
 
         <>
         <ToastContainer/>
-             <div className="text-start my-3 ">
-                <button onClick={() => alerta()} className="mg-btn btn btn-primary">Eliminar</button>
+             <div className=" my-3 ">
+                <img onClick={() => alerta()}  className="mg-btn mouse" height={50} src={borrarImagen} alt="Eliminar Inquilino"/>
             </div>
         </>
     )

@@ -9,7 +9,7 @@ const BotonAgregarInqui = (id) =>{
         <>
          <div className="contenedor-botones text-end">
      
-             <Link to ={"/agregar/inquilino/" + id.idPropietario}>< img  height={25} src={logoMas} alt="agregar inquilino" className="my-3" /></Link>
+             <Link to ={"/agregar/inquilino/" + id.idPropietario}>< img  height={25} src={logoMas} alt="agregar inquilino" className="my-3 mouse" /></Link>
           
          </div>
         </>

@@ -17,6 +17,8 @@ const EditarInquilino = () => {
     const [vigencia, setVigencia] = useState({ fecha: "" });
     const [vencimiento, setVencimineto] = useState({ fecha: "" });
     const navigate = useNavigate()
+    const [ajuste, setAjuste] = useState("")
+
 
     let valorVencimiento = { fecha: "" }
     let valorVigencia = { fecha: "" }
@@ -26,7 +28,7 @@ const EditarInquilino = () => {
     let email = "";
     let dni = "";
     let direccion = "";
-    let aumento = "";
+    // let aumento = inquilino.aumento;
     let monto = "";
 
 
@@ -42,7 +44,6 @@ const EditarInquilino = () => {
 
     })
 
-
     useEffect(() => {
 
         const db = getFirestore();
@@ -52,7 +53,9 @@ const EditarInquilino = () => {
             if (snapShot.exists()) {
 
                 setInquilino({ id: snapShot.id, ...snapShot.data() });
+              
                 setCargador(false)
+
 
 
             } else {
@@ -63,6 +66,8 @@ const EditarInquilino = () => {
 
 
     }, [])
+         
+   
 
 
 
@@ -70,14 +75,8 @@ const EditarInquilino = () => {
     registerLocale("es", es);
 
     const onChangeVigencia = (fecha) => {
-
-
         valorVigencia = { fecha: fecha }
         // setVigencia({ fecha: fecha })
-
-
-
-
     }
 
     const onChangeVencimiento = (fecha) => {
@@ -89,6 +88,9 @@ const EditarInquilino = () => {
     }
 
 
+    const cambioAjuste = (e) => {
+        setAjuste(e.target.value)
+    }
 
 
     const control = () => {
@@ -115,9 +117,7 @@ const EditarInquilino = () => {
         if (direccion == "") {
             direccion = inquilino.direccion
         }
-        if (aumento == "") {
-            aumento = inquilino.aumento
-        }
+      
         if (valorVigencia.fecha == "") {
 
             valorVigencia.fecha = inquilino.vigencia.fecha
@@ -143,7 +143,7 @@ const EditarInquilino = () => {
             email: email,
             dni: dni,
             direccion: direccion,
-            aumento: aumento,
+            aumento: ajuste,
             vencimiento: valorVencimiento,
             vigencia: valorVigencia,
             monto: monto
@@ -160,8 +160,8 @@ const EditarInquilino = () => {
             navigate("/inquilino/" + inquilino.id)
         }, 1500)
 
-        console.log(inqui)
-        // console.log(inquilino.vencimiento.fecha.seconds)
+       
+        
 
     }
 
@@ -206,9 +206,15 @@ const EditarInquilino = () => {
 
                     </div>
                     <div className="mb-3">
-                        <label className="label-datos">Aumento:</label>
-                        <input type="text" className="form-control " placeholder={inquilino.aumento} aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { aumento = (e.target.value) }} />
-
+                        <label className="label-datos">Ajuste</label>
+                        <select className="form-select"  aria-label="Default select example" onChange={cambioAjuste}>
+                            <option value={inquilino.aumento}>{inquilino.aumento}</option>
+                            <option value="Bimestral">Bimestral</option>
+                            <option value="Trimestral">Trimestral</option>
+                            <option value="Cuatrimestral">Cuatrimestral</option>
+                            <option value="Semestral">Semestral</option>
+                            <option value="Anual">Anual</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <label className="label-datos">Monto:</label>

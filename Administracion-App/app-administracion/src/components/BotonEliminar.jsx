@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 <link rel="stylesheet" href="@sweetalert2/theme-bulma/bulma.css"></link>
+import eliminarImagen from "../assets/quitar-usuario.png";
 
 
 
@@ -82,8 +83,8 @@ const BotonEliminar = ({ propietario, inquilinos }) => {
     return (
         <>
             <ToastContainer />
-            <div className="text-start my-3">
-                <button onClick={() => alerta()} className="mg-btn btn btn-primary">Eliminar</button>
+            <div className="mg-btn my-3 ">
+                <img className="mouse" height={50} onClick={() => alerta()} src={eliminarImagen} alt="Eliminar Propietario" />
             </div>
         </>
     )

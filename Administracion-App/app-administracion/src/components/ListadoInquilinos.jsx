@@ -1,7 +1,7 @@
 import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import imagen from "../assets/ajedrez (1).png"
+import imagen from "../assets/imagen-inqui.png"
 import Cargando from "./Cargando"
 
 const ListadoIquilinos = () => {
@@ -45,7 +45,6 @@ const ListadoIquilinos = () => {
   return (
     <>
       {cargando ? <Cargando /> : <div className="container my-5">
-        <h1 className="my-5 text-center">Listado de Inquilinos</h1>
         <div className="contenedor-propietarios text-center ">
           {inquilinos.map(e => (
             <Link key={e.id} to={"/inquilino/" + e.id} style={{textDecoration:"none"}}> <div  className="col-3 my-5 ancho opacidad tamano">

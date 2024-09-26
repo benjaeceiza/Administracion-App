@@ -11,8 +11,7 @@ const ContextProvider = ({ children }) => {
     const [editarEmail, setEditarEmail] = useState(false);
     const [editarCuit, setEditarCuit] = useState(false);
     const [editarCbu, setEditarCbu] = useState(false);
-
-
+    
 
     return <Context.Provider value={{
         editarTelefono, setEditarTelefono, editarEmail,

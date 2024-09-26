@@ -39,6 +39,8 @@ const AlquileresAlDia = () => {
         setCargando(false)
     },1)
 
+
+
     return (
         <>
          <div className="container">

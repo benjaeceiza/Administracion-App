@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Cargando from "./Cargando";
 import imagenUsuarioProp from "../assets/corona.png"
-import imagenUsuarioInqui from "../assets/ajedrez (1).png"
+import imagenUsuarioInqui from "../assets/imagen-inqui.png"
 
 
 const Buscados = () => {
@@ -56,24 +56,24 @@ const Buscados = () => {
 
     setTimeout(() => {
 
-        if (arrayProp.some(e => (e.apellido + " " + e.nombre) == nombreBuscado)) {
+        if (arrayProp.some(e => (e.apellido.toUpperCase() + " " + e.nombre.toUpperCase()) == nombreBuscado.toUpperCase())) {
 
-            setBuscados(arrayProp.filter(e => (e.apellido + " " + e.nombre) == nombreBuscado))
+            setBuscados(arrayProp.filter(e => (e.apellido.toUpperCase() + " " + e.nombre.toUpperCase()) == nombreBuscado.toUpperCase()))
             setExiste(false)
         } else {
-            if (arrayProp.some(e => (e.nombre + " " + e.apellido) == nombreBuscado)) {
+            if (arrayProp.some(e => (e.nombre.toUpperCase() + " " + e.apellido.toUpperCase()) == nombreBuscado.toUpperCase())) {
 
-                setBuscados(arrayProp.filter(e => (e.nombre + " " + e.apellido) == nombreBuscado))
+                setBuscados(arrayProp.filter(e => (e.nombre.toUpperCase() + " " + e.apellido.toUpperCase()) == nombreBuscado.toUpperCase()))
                 setExiste(false)
             } else {
-                if (arrayProp.some(e => e.apellido == nombreBuscado)) {
+                if (arrayProp.some(e => e.apellido.toUpperCase() == nombreBuscado.toUpperCase())) {
 
                     setBuscados(arrayProp.filter(e => e.apellido.toUpperCase() == nombreBuscado.toUpperCase()))
                     setExiste(false)
 
                 } else {
 
-                    if (arrayProp.some(e => e.nombre == nombreBuscado)) {
+                    if (arrayProp.some(e => e.nombre.toUpperCase() == nombreBuscado.toUpperCase())) {
 
                         setBuscados(arrayProp.filter(e => e.nombre.toUpperCase() == nombreBuscado.toUpperCase()))
                         setExiste(false)
@@ -86,24 +86,24 @@ const Buscados = () => {
             }
         }
 
-        if (arrayInqui.some(e => (e.apellido + " " + e.nombre) == nombreBuscado)) {
+        if (arrayInqui.some(e => (e.apellido.toUpperCase() + " " + e.nombre.toUpperCase()) == nombreBuscado.toUpperCase())) {
 
-            setBuscadosInqui(arrayInqui.filter(e => (e.apellido + " " + e.nombre) == nombreBuscado))
+            setBuscadosInqui(arrayInqui.filter(e => (e.apellido.toUpperCase() + " " + e.nombre.toUpperCase()) == nombreBuscado.toUpperCase()))
             setExiste2(false)
         } else {
-            if (arrayInqui.some(e => (e.nombre + " " + e.apellido) == nombreBuscado)) {
+            if (arrayInqui.some(e => (e.nombre.toUpperCase() + " " + e.apellido.toUpperCase()) == nombreBuscado.toUpperCase())) {
 
-                setBuscadosInqui(arrayInqui.filter(e => (e.nombre + " " + e.apellido) == nombreBuscado))
+                setBuscadosInqui(arrayInqui.filter(e => (e.nombre.toUpperCase() + " " + e.apellido.toUpperCase()) == nombreBuscado.toUpperCase()))
                 setExiste2(false)
             } else {
-                if (arrayInqui.some(e => e.apellido == nombreBuscado)) {
+                if (arrayInqui.some(e => e.apellido.toUpperCase() == nombreBuscado.toUpperCase())) {
 
                     setBuscadosInqui(arrayInqui.filter(e => e.apellido.toUpperCase() == nombreBuscado.toUpperCase()))
                     setExiste2(false)
 
                 } else {
 
-                    if (arrayInqui.some(e => e.nombre == nombreBuscado)) {
+                    if (arrayInqui.some(e => e.nombre.toUpperCase() == nombreBuscado.toUpperCase())) {
 
                         setBuscadosInqui(arrayInqui.filter(e => e.nombre.toUpperCase() == nombreBuscado.toUpperCase()))
                         setExiste2(false)

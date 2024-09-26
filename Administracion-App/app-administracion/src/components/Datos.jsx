@@ -15,7 +15,7 @@ const Datos = ({ datos, id }) => {
         <>
             <div key={datos.id + 100} className="container contenedor-datos">
                 <div className=" text-end ">
-                    <img onClick={() => editar()} className="text-end" height={24} src={imagenEditar} alt="editar" />
+                    <img onClick={() => editar()} className="text-end mouse" height={24} src={imagenEditar} alt="editar" />
                 </div>
                 <div className="row">
                     <div className="col col-datos">

@@ -95,7 +95,7 @@ const Propiedades = () => {
                                     <td>{e.finca}</td>
                                     <td>{e.nix}</td>
                                     <td>{e.gas}</td>
-                                    <td onClick={() => eliminarPropiedad(e.id)}><img height={20} src={tacho} alt="Eliminar" /></td>
+                                    <td onClick={() => eliminarPropiedad(e.id)}><img height={20} src={tacho} alt="Eliminar" className="mouse"/></td>
                                 </tr>
                             ))}
 

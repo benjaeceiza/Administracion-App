@@ -1,5 +1,5 @@
 
-import foto from "../assets/ajedrez (1).png"
+import foto from "../assets/imagen-inqui.png"
 const FotoNombreInqui = ({ inquilino }) => {
 
   return (

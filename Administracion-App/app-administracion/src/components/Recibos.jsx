@@ -5,6 +5,8 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Recibos = () => {
@@ -19,6 +21,20 @@ const Recibos = () => {
     const [nombrePersona, setnombrePersona] = useState("");
     const [idPersona, setIdPersona] = useState("")
     const [fechaRecibo, setFechaRecibo] = useState({ fecha: new Date });
+
+    
+    const notifySucces = () => toast.success("Recibo Enviado", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+
+    })
+
 
     useEffect(() => {
         const db = getFirestore();
@@ -98,7 +114,9 @@ const Recibos = () => {
             const docRef = doc(db, tipo, idPersona)
             const docRef2 = collection(db, "recibos")
             updateDoc(docRef, { alquiler: true })
-            addDoc(docRef2, reciboPersona)
+            addDoc(docRef2, reciboPersona).then(
+                   notifySucces()
+            )
 
         } else {
 
@@ -114,7 +132,9 @@ const Recibos = () => {
 
             const db = getFirestore();
             const docRef2 = collection(db, "recibos")
-            addDoc(docRef2, reciboPersona)
+            addDoc(docRef2, reciboPersona).then(
+                 notifySucces()
+            )
         }
 
     }
@@ -125,10 +145,11 @@ const Recibos = () => {
 
     return (
         <>
+            <ToastContainer />
             {cargando ? <Cargando /> : <div className="container">
                 <div className="text-end">
-                   <Link to={"/recibos"}><button className="btn btn-primary my-3">Hacer Recibo</button></Link>
-                   <Link to={"/recibos/verrecibos"}><button className="btn btn-primary my-3">Ver Recibos</button></Link>
+                    <Link to={"/recibos"}><button className="btn btn-primary my-3">Hacer Recibo</button></Link>
+                    <Link to={"/recibos/verrecibos"}><button className="btn btn-primary my-3">Ver Recibos</button></Link>
                 </div>
                 <div className="row my-5 ancho-recibo">
                     <div className="col recibo my-5">

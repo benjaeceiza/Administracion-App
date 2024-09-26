@@ -18,6 +18,7 @@ import AlquileresPendientes from "./components/AlquileresPendientes"
 import AlquileresAlDia from "./components/AlquileresAlDia"
 import Recibos from "./components/Recibos"
 import VerRecibos from "./components/VerRecibos"
+import Notas from "./components/Notas"
 
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/alquileres/aldia" element={<AlquileresAlDia/>} />
             <Route path="/recibos" element={<Recibos/>} />
             <Route path="/recibos/verrecibos" element={<VerRecibos/>} />
+            <Route path="/notas" element={<Notas/>} />
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,11 +1,9 @@
 
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import imagenUsuario from "../assets/usuario.png"
-import Cargando from "./Cargando";
-import BotonAgregarInqui from "./BotonAgregarInqui";
 import CargandoInquilinos from "./CargandoInquilinos";
+import imagenInqui from "../assets/imagen-inqui.png"
 
 
 const inquilinos = (id) => {
@@ -71,12 +69,12 @@ const inquilinos = (id) => {
       {cargador ? <CargandoInquilinos /> :
         <div className="contenedor-inqui">
           {inquilino.map(e => (
-          <div className="img-nombre" key={e.id} >
-            <Link to={"/inquilino/" + e.id}><img height={100} src={imagenUsuario} alt="" /></Link>
-            <p>{e.apellido}</p>
-          </div>
+            <div className="img-nombre" key={e.id} >
+              <Link to={"/inquilino/" + e.id}><img height={50} src={imagenInqui} alt="" /></Link>
+              <p>{e.apellido}</p>
+            </div>  
           ))}
-          </div>}
+        </div>}
 
 
     </>
