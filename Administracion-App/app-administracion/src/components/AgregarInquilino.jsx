@@ -1,12 +1,7 @@
 
 import FormularioInquilino from "./FormularioInquilino";
 
-  
-
   const AgregarInquilino = () =>{
-
-    
-  
 
    return(
      

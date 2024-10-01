@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -15,18 +15,21 @@ const FormularioInquilino = () => {
     const navigate = useNavigate()
 
     registerLocale("es", es);
-
+   
     const { idInquilino } = useParams();
     const [nombreInqui, setNombreInqui] = useState("");
     const [apellidoInqui, setApellidoInqui] = useState("");
     const [telefonoInqui, setTelefonoInqui] = useState(0);
     const [emailInqui, setEmailInqui] = useState("");
+    const [genero,setGenero] = useState("");
     const [dniInqui, setDniInqui] = useState(0);
     const [direccionInqui, setDireccionInqui] = useState("");
     const [aumento, setAumento] = useState("");
     const [vigencia, setVigencia] = useState({ fecha: new Date() });
     const [vencimiento, setVencimineto] = useState({ fecha: new Date() });
     const [monto, setMonto] = useState(0);
+    let avatar = Math.floor(Math.random()*(30-1)+1)
+    let  inquilinoNuevo;
     const formulario = useRef()
     const [error, setError] = useState(false);
     const [error2, setError2] = useState(false);
@@ -81,7 +84,12 @@ const FormularioInquilino = () => {
         setAumento(e.target.value)
     }
 
+    const  cambioGenero =  (e) =>{
+     
+        setGenero(e.target.value)
+    }
 
+ 
 
 
     const control = () => {
@@ -165,9 +173,12 @@ const FormularioInquilino = () => {
     }
 
     const crearInquilino = () => {
-        const inquilino = {
-            nombre: nombreInqui,
-            apellido: apellidoInqui,
+
+       if(genero == "Hombre"){
+
+        inquilinoNuevo = {
+            nombre: nombreInqui.at(0).toUpperCase()+nombreInqui.slice(1).toLowerCase(),
+            apellido: apellidoInqui.at(0).toUpperCase()+apellidoInqui.slice(1).toLowerCase(),
             email: emailInqui,
             dni: dniInqui,
             direccion: direccionInqui,
@@ -177,14 +188,37 @@ const FormularioInquilino = () => {
             vencimiento: vencimiento,
             idprop: idInquilino,
             monto: monto,
-            alquiler: false
+            alquiler: false,
+            imagen:"/src/assets/avatars/hombre/hombre"+avatar+".png",
 
         }
+
+       }else{
+       
+        inquilinoNuevo = {
+            nombre: nombreInqui.at(0).toUpperCase()+nombreInqui.slice(1).toLowerCase(),
+            apellido: apellidoInqui.at(0).toUpperCase()+apellidoInqui.slice(1).toLowerCase(),
+            email: emailInqui,
+            dni: dniInqui,
+            direccion: direccionInqui,
+            telefono: telefonoInqui,
+            aumento: aumento,
+            vigencia: vigencia,
+            vencimiento: vencimiento,
+            idprop: idInquilino,
+            monto: monto,
+            alquiler: false,
+            imagen:"/src/assets/avatars/mujer/mujer"+avatar+".png",
+
+        }
+       }
+
+        
 
 
         const db = getFirestore();
         const orderCollection = collection(db, "inquilinos");
-        addDoc(orderCollection, inquilino).then(
+        addDoc(orderCollection, inquilinoNuevo).then(
 
             notifySucces()
 
@@ -222,6 +256,14 @@ const FormularioInquilino = () => {
                     <div className="mb-3">
                         <label className="label-datos">Apellido</label>
                         <input type="text" className={"form-control " + (error2 ? "validacion-error" : " ")} placeholder="Apellido" aria-label="Recipient's username" aria-describedby="basic-addon2" onInput={(e) => { setApellidoInqui(e.target.value) }} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="label-datos">Género</label>
+                        <select className="form-select" aria-label="Default select example" onChange={cambioGenero}>
+                            <option value="">Seleccione el género</option>
+                            <option value= "Hombre">Hombre</option>
+                            <option value= "Mujer">Mujer</option>
+                        </select>
                     </div>
                     <div className="mb-3">
                         <label className="label-datos">Telefono</label>

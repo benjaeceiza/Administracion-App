@@ -28,7 +28,6 @@ const EditarInquilino = () => {
     let email = "";
     let dni = "";
     let direccion = "";
-    // let aumento = inquilino.aumento;
     let monto = "";
 
 
@@ -53,7 +52,6 @@ const EditarInquilino = () => {
             if (snapShot.exists()) {
 
                 setInquilino({ id: snapShot.id, ...snapShot.data() });
-              
                 setCargador(false)
 
 
@@ -130,6 +128,10 @@ const EditarInquilino = () => {
             monto = inquilino.monto
         }
 
+        if (ajuste == ""){
+            setAjuste(inquilino.aumento)
+        }
+
         crear()
 
     }
@@ -137,8 +139,8 @@ const EditarInquilino = () => {
     const crear = () => {
 
         const inqui = {
-            nombre: nombre,
-            apellido: apellido,
+            nombre: nombre.at(0).toUpperCase() + nombre.slice(1).toLowerCase(),
+            apellido: apellido.at(0).toUpperCase() + apellido.slice(1).toLowerCase(),
             telefono: telefono,
             email: email,
             dni: dni,
@@ -149,7 +151,7 @@ const EditarInquilino = () => {
             monto: monto
         }
 
-
+    
 
         const db = getFirestore();
         const docRef = doc(db, "inquilinos", idInquilino)
@@ -172,8 +174,7 @@ const EditarInquilino = () => {
     return (
         <>
             <ToastContainer />
-            {cargador ? <Cargando /> : <div className="container">
-                <h1 className="text-center my-5">Editar Inquilino</h1>
+            {cargador ? <Cargando /> : <div className="container formulario-editar my-5">
                 <form className="container" >
                     <div className="mb-3">
                         <label className="label-datos">Nombre:</label>

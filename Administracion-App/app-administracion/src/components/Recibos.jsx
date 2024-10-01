@@ -22,7 +22,7 @@ const Recibos = () => {
     const [idPersona, setIdPersona] = useState("")
     const [fechaRecibo, setFechaRecibo] = useState({ fecha: new Date });
 
-    
+
     const notifySucces = () => toast.success("Recibo Enviado", {
         position: "top-center",
         autoClose: 1000,
@@ -115,7 +115,7 @@ const Recibos = () => {
             const docRef2 = collection(db, "recibos")
             updateDoc(docRef, { alquiler: true })
             addDoc(docRef2, reciboPersona).then(
-                   notifySucces()
+                notifySucces()
             )
 
         } else {
@@ -133,7 +133,7 @@ const Recibos = () => {
             const db = getFirestore();
             const docRef2 = collection(db, "recibos")
             addDoc(docRef2, reciboPersona).then(
-                 notifySucces()
+                notifySucces()
             )
         }
 
@@ -148,38 +148,49 @@ const Recibos = () => {
             <ToastContainer />
             {cargando ? <Cargando /> : <div className="container">
                 <div className="text-end">
-                    <Link to={"/recibos"}><button className="btn btn-primary my-3">Hacer Recibo</button></Link>
                     <Link to={"/recibos/verrecibos"}><button className="btn btn-primary my-3">Ver Recibos</button></Link>
                 </div>
-                <div className="row my-5 ancho-recibo">
+                <div className="row ancho-recibo">
                     <div className="col recibo my-5">
                         <form action="">
-                            <p className="my-3">Pago en concepto de:</p>
-                            <select className="form-select my-3" aria-label="Default select example" onChange={cambioConcepto} >
-                                <option value={"Alquiler"}>Alquiler</option>
-                                <option value={"Otro"}>Otro</option>
-                            </select>
-                            {inputConcepto ?
-                                <input className="form-control" type="text" placeholder="Concepto" onInput={e => setConcepto(e.target.value)} /> : ""}
-                            <p className="my-3">Tipo</p>
-                            <select className="form-select my-3" aria-label="Default select example" onChange={cambioTipo}>
-                                <option value={"inquilinos"}>Inquilino</option>
-                                <option value={"propietarios"}>Propietario</option>
-                            </select>
-                            <p className="my-3">Nombre</p>
-                            <select className="form-select my-3" aria-label="Default select example" onChange={cambioNombre}>
-                                <option value="">Seleccione un nombre</option>
-                                {personas.map(e => (
-                                    <option key={e.id} value={(e.apellido) + " " + (e.nombre)}>{e.apellido} {e.nombre}</option>
-                                ))}
-                            </select>
-                            <p className="my-3">Fecha</p>
-                            <DatePicker className="input-fecha" selected={fechaRecibo.fecha} onChange={onChangeFecha} locale={"es"} dateFormat={"dd-MM-yyyy"} />
-                            <p className="my-3">Monto</p>
-                            <input placeholder="Monto" className="form-control my 3" type="text" onInput={e => setMonto(e.target.value)} />
+                            <div className="my-3">
+                                <label className="label-datos">En concepto de</label>
+                                <select className="form-select" aria-label="Default select example" onChange={cambioConcepto} >
+                                    <option value={"Alquiler"}>Alquiler</option>
+                                    <option value={"Otro"}>Otro</option>
+                                </select>
+                            </div>
+                            <div className="my-3">
+                                {inputConcepto ?
+                                    <input className="form-control" type="text" placeholder="Concepto" onInput={e => setConcepto(e.target.value)} /> : ""}
+                                <label className="label-datos">Tipo</label>
+                                <select className="form-select" aria-label="Default select example" onChange={cambioTipo}>
+                                    <option value={"inquilinos"}>Inquilino</option>
+                                    <option value={"propietarios"}>Propietario</option>
+                                </select>
+                            </div>
+                            <div className="my-3">
+                                <label className="label-datos">Nombre</label>
+                                <select className="form-select" aria-label="Default select example" onChange={cambioNombre}>
+                                    <option value="">Seleccione un nombre</option>
+                                    {personas.map(e => (
+                                        <option key={e.id} value={(e.apellido) + " " + (e.nombre)}>{e.apellido} {e.nombre}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="my-3">
+                                <div className="contenedor-fecha-label">
+                                    <label className="label-datos">Fecha</label>
+                                    <DatePicker className="input-fecha" selected={fechaRecibo.fecha} onChange={onChangeFecha} locale={"es"} dateFormat={"dd-MM-yyyy"} />
+                                </div>
+                            </div>
+                            <div className="my-3">
+                                <label className="label-datos">Monto</label>
+                                <input placeholder="Monto" className="form-control" type="text" onInput={e => setMonto(e.target.value)} />
+                            </div>
                         </form>
                         <div className="text-center">
-                            <button onClick={() => enviar()} className="btn btn-primary my-5">Terminar Recibo</button>
+                            <button onClick={() => enviar()} className="btn btn-primary my-3">Terminar Recibo</button>
                         </div>
                     </div>
                 </div>

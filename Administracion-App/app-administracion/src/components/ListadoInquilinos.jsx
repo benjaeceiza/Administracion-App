@@ -1,13 +1,15 @@
-import { collection, doc, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import imagen from "../assets/imagen-inqui.png"
 import Cargando from "./Cargando"
+import AvisoVencimiento from "./avisoVencimiento";
 
 const ListadoIquilinos = () => {
 
-  const [inquilinos, setInquilinos] = useState([]);
+  let inquilinos;
+  const [inquilinosOrdenados, setInquilinosOrdenados] = useState([]);
   const [cargando, setCargando] = useState(true);
+ 
 
   const array = [{
 
@@ -28,7 +30,8 @@ const ListadoIquilinos = () => {
 
         if (Snapshot.size > 0) {
 
-          setInquilinos(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+          inquilinos = (Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+          setInquilinosOrdenados([...inquilinos].sort((a, b) => (a.apellido > b.apellido ? 1 : a.apellido < b.apellido ? -1 : 0)))
           setCargando(false)
         } else {
           console.error("error")
@@ -44,11 +47,12 @@ const ListadoIquilinos = () => {
 
   return (
     <>
-      {cargando ? <Cargando /> : <div className="container my-5">
+      {cargando ? <Cargando /> : <div className="container">
+        <AvisoVencimiento inquilinos={inquilinosOrdenados}/>
         <div className="contenedor-propietarios text-center ">
-          {inquilinos.map(e => (
-            <Link key={e.id} to={"/inquilino/" + e.id} style={{textDecoration:"none"}}> <div  className="col-3 my-5 ancho opacidad tamano">
-              <img src={imagen} alt={e.nombre} />
+          {inquilinosOrdenados.map(e => (
+            <Link key={e.id} to={"/inquilino/" + e.id} style={{ textDecoration: "none" }}> <div className="col-3 my-5 ancho opacidad">
+              <img src={e.imagen} alt={e.nombre} />
               <div className="fondo-nombre-inqui">
                 <p className="my-3 nombre">{e.apellido} {e.nombre}</p>
               </div>

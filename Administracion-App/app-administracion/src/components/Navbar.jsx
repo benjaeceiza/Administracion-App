@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import menu from "../assets/menu.png"
 import lupa from "../assets/lupa.png"
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+
 
 
 

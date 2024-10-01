@@ -7,7 +7,7 @@ import CargandoInquilinos from "./CargandoInquilinos";
 
 const Propiedades = () => {
 
-    const [propiedades, setPropiedades] = useState([]);
+    let propiedades;
     const [filtroPropiedades, setFiltroPropiedades] = useState([]);
     const { id } = useParams()
     const [cargador, setCargador] = useState(true);
@@ -23,7 +23,9 @@ const Propiedades = () => {
 
             if (Snapshot.size >= 0) {
 
-                setPropiedades(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+                propiedades = Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() }));
+                setFiltroPropiedades(propiedades.filter(e => e.idprop == id));
+                setCargador(false)
                 
             } else {
                 console.error("error")
@@ -41,26 +43,26 @@ const Propiedades = () => {
         const db = getFirestore();
         const docRef = doc(db, "propiedades", idPropiedad);
         
-        deleteDoc(docRef).then(
+        deleteDoc(docRef)
+
+        const itemCollection = collection(db, "propiedades");
+        getDocs(itemCollection).then(Snapshot => {
+
+            if (Snapshot.size >= 0) {
+
+                propiedades = Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() }));
+                setFiltroPropiedades(propiedades.filter(e => e.idprop == id));
+                
+                
+            } else {
+                console.error("error")
+            }
+
            
-        )
+        })
         
     }
 
-
-  
-    
-    setTimeout(() => {
-      
-        setFiltroPropiedades(propiedades.filter(e => e.idprop == id))
-    }, 1)
-    
-
-
-    setTimeout(() => {
-    
-        setCargador(false)
-    }, 1000)
 
 
 

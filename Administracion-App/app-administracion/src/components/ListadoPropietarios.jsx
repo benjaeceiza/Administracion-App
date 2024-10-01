@@ -9,7 +9,8 @@ import Cargando from "./Cargando";
 
 const ListadoPropietarios = () => {
 
-  const [propietario, setPropietario] = useState([]);
+  let propietarios;
+  const [propietariosOrdenados, setPropietariosOrdenados] = useState([]);
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
@@ -22,13 +23,16 @@ const ListadoPropietarios = () => {
 
       if (Snapshot.size > 0) {
 
-        setPropietario(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+        propietarios = Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() }));
+        setPropietariosOrdenados([...propietarios].sort((a, b) => (a.apellido > b.apellido ? 1 : a.apellido < b.apellido ? -1 : 0)))
         setCargando(false)
+       
       } else {
         console.error("error")
       }
     })
-
+    
+    
 
   }, [])
 
@@ -41,7 +45,7 @@ const ListadoPropietarios = () => {
         <BotonAgregar />
         </div>
         <div className="contenedor-propietarios text-center">
-          <Propietarios propietario={propietario} />
+          <Propietarios propietario={propietariosOrdenados} />
         </div>
       </div>
     }

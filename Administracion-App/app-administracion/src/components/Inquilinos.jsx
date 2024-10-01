@@ -3,14 +3,14 @@ import { Link } from "react-router-dom"
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import CargandoInquilinos from "./CargandoInquilinos";
-import imagenInqui from "../assets/imagen-inqui.png"
+
 
 
 const inquilinos = (id) => {
 
 
+  let arrayDeInquilinos;
   const [inquilino, setInquilino] = useState([])
-  const [arrayInquilinos, setArrayInquilinos] = useState([]);
   const [cargador, setCargador] = useState(true);
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const inquilinos = (id) => {
 
       if (Snapshot.size > 0) {
 
-        setArrayInquilinos(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+        arrayDeInquilinos = Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() }));
+        setInquilino(arrayDeInquilinos.filter(e => e.idprop == id.idPropietario))
+        setCargador(false)
 
       } else {
         console.error("error")
@@ -34,20 +36,6 @@ const inquilinos = (id) => {
 
 
   }, [])
-
-  setTimeout(() => {
-
-    setInquilino(arrayInquilinos.filter(e => e.idprop == id.idPropietario))
-
-
-
-  }, 1)
-  setTimeout(() => {
-
-    setCargador(false)
-
-
-  }, 2000)
 
 
   if (inquilino.length == 0) {
@@ -69,8 +57,8 @@ const inquilinos = (id) => {
       {cargador ? <CargandoInquilinos /> :
         <div className="contenedor-inqui">
           {inquilino.map(e => (
-            <div className="img-nombre" key={e.id} >
-              <Link to={"/inquilino/" + e.id}><img height={50} src={imagenInqui} alt="" /></Link>
+            <div className="img-nombre opacidad" key={e.id} >
+              <Link to={"/inquilino/" + e.id}><img height={80} src={e.imagen} alt="" /></Link>
               <p>{e.apellido}</p>
             </div>  
           ))}

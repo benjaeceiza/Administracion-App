@@ -101,8 +101,8 @@ const Editar = () => {
     const crear = () => {
 
         const prop = {
-            nombre: nombre,
-            apellido: apellido,
+            nombre: nombre.at(0).toUpperCase() + nombre.slice(1).toLowerCase(),
+            apellido: apellido.at(0).toUpperCase() + apellido.slice(1).toLowerCase(),
             telefono: telefono,
             email: email,
             cuit: cuit,

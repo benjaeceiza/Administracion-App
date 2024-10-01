@@ -9,11 +9,9 @@ import { Link } from "react-router-dom";
 
 const Alquileres = () => {
 
-    const[inquilinos,setInquilinos] = useState([]);
+    let inquilinos;
     const[cargando,setCargando] = useState(true);
     const[filtros,setFiltros] = useState([]);
-
-   
 
 
     useEffect(() => { 
@@ -22,7 +20,9 @@ const Alquileres = () => {
         getDocs(itemCollection).then(Snapshot => {
     
             if (Snapshot.size > 0) {
-                setInquilinos(Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() })));
+                inquilinos = Snapshot.docs.map(documento => ({ id: documento.id, ...documento.data() }));
+                setFiltros(inquilinos.filter(e => e.alquiler == false))
+                setCargando(false)
             } else {
                 console.error("error")
             }
@@ -30,27 +30,20 @@ const Alquileres = () => {
     
     }, []) 
 
-   
-       
-        setTimeout(() =>{
-            setFiltros(inquilinos.filter(e => e.alquiler == false))
-            setCargando(false)
-        },1)
-        
-    
+
 
     return (
         <>
          <div className="container">
-            {cargando ? <Cargando/> :<div className="column">
+            {cargando ? <Cargando/> :<div className="row">
                 <div className="btn-pagado-nopagado text-end">
                 <Link to={"/alquileres/aldia"}><button className="btn btn-primary my-5">Al dia</button></Link>
                 <Link to={"/alquileres/pendientes"}><button className="btn btn-primary my-5">Pendientes</button></Link>
                 </div>
                 {filtros.map( e => (
                     <div key={e.id} className="col">
-                        <div className="alquiler-no-al-dia my-5">
-                            <p>{e.nombre} {e.apellido}</p>
+                        <div className="alquiler-no-al-dia text-center my-5">
+                            <p>{e.apellido} {e.nombre} </p>
                             <img src={pendiente} alt="" />
                         </div>
                     </div>

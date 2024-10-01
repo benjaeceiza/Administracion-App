@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import botonEditar from "../assets/boton-editar.png"
 import Datos from "./Datos";
 import FotoNombreProp from "./FotoNombreProp"
 import Inquilinos from "./Inquilinos"
@@ -21,9 +20,9 @@ const PropietariosDetail = () => {
     const [cargador, setCargador] = useState(true);
     const [inquilinos, setInquilinos] = useState([])
     const [inquilinosAgrupado, setInquilinosAgrupado] = useState([])
-    const [imagen,setImagen] = useState();
+    const [imagen, setImagen] = useState();
 
-   
+
 
 
 
@@ -69,10 +68,13 @@ const PropietariosDetail = () => {
         <>
             {cargador ? <Cargando /> :
                 <div className=" contenedor-propietario-detail">
-                        <BotonEliminar propietario={id} inquilinos={inquilinosAgrupado} />
+                    <BotonEliminar propietario={id} inquilinos={inquilinosAgrupado} />
                     <div className="contenedor-datos-fotonombre">
                         <div className="col my-5">
-                            <FotoNombreProp propietario={propietario} imagen={imagen}/>
+                            <div className="contenedor-boton-avatar">
+                                <img className="cambiar-avatar my-3" height={20} src="/src/assets/boton-editar.png" alt="" />
+                            </div>
+                            <FotoNombreProp propietario={propietario} imagen={imagen} />
                         </div>
                         <div className="col my-5">
                             <Datos datos={propietario} id={id} />

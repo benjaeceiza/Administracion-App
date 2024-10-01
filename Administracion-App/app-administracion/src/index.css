@@ -8,6 +8,7 @@ body {
   position: relative;
   padding-bottom: 40px;
   min-height: 100vh;
+
 }
 
 /* SPINNER DE CARGA*/
@@ -43,7 +44,7 @@ body {
 
 /* NAV BAR */
 
-.nav-mob{
+.nav-mob {
   display: none;
 }
 
@@ -65,7 +66,8 @@ body {
 .nav-link:hover {
   background-color: rgb(57, 199, 121);
 }
-.active{
+
+.active {
   background-color: rgb(57, 199, 121);
 }
 
@@ -117,14 +119,23 @@ body {
   width: 250px;
   margin: 0px 10px;
   overflow: hidden;
-  border: 1px rgb(110, 110, 110) solid;
+  background-color: rgb(248, 245, 245);
   border-radius: 20px;
-
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
 
 }
 
+.ancho-detail {
+  width: 250px;
+  margin: 0px 10px;
+  overflow: hidden;
+  background-color: rgb(248, 245, 245);
+  border-radius: 20px;
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
+}
+
 .ancho img {
-  padding: 100px 0;
+  padding: 75px 0;
 }
 
 .tamano img {
@@ -135,6 +146,14 @@ body {
   margin: auto;
 }
 
+.contenedor-boton-avatar{
+  width: 250px;
+  text-align: end;
+  margin: auto;
+}
+.cambiar-avatar{
+
+}
 .mouse:hover {
   filter: drop-shadow(2px 1px 1px rgb(94, 93, 93));
 
@@ -145,8 +164,7 @@ body {
   padding: 1px;
   border-end-end-radius: 20px;
   border-end-start-radius: 20px;
-
-
+  font-weight: bold;
 }
 
 
@@ -159,7 +177,8 @@ body {
 
 .opacidad:hover {
 
-  box-shadow: 0px 0px 5px 1px rgb(65, 65, 65);
+  background-color: rgb(211, 210, 210);
+  transition: all .5s;
 }
 
 
@@ -209,7 +228,7 @@ body {
 
 .contenedor-propiedades {
   overflow: hidden;
-  border: solid rgb(10, 167, 119) 3px;
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
   margin: auto;
   border-radius: 20px;
   width: 90%;
@@ -219,7 +238,7 @@ body {
 .contenedor-inqui {
   width: 90%;
   min-width: 250px;
-  border: solid rgb(10, 167, 119) 3px;
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -234,11 +253,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 40px;
-  border: 1px solid rgb(184, 184, 184);
+  margin: 10px 10px;
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
   border-radius: 10px;
   padding-top: 10px;
 }
+
+
+
 
 .img-nombre p {
   text-align: center;
@@ -250,7 +272,7 @@ body {
   margin-top: 5px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  
+  font-weight: bold;
 
 }
 
@@ -259,7 +281,7 @@ body {
 }
 
 .contenedor-datos {
-  border: solid 3px rgb(10, 167, 119);
+  box-shadow: 0 0 5px 1px rgb(105, 105, 105);
   padding: 20px 15px;
   border-radius: 20px;
   text-align: start;
@@ -274,7 +296,7 @@ body {
 }
 
 .parrafo-datos {
-  background-color: rgba(224, 224, 224, 0.822);
+  background-color: rgba(241, 241, 241, 0.822);
   padding: 10px 5px;
 
 }
@@ -284,12 +306,35 @@ body {
 }
 
 .fondo-nombre-inqui {
-  margin-top: 50px;
   background-color: rgb(10, 138, 177);
   padding: 1px;
   border-end-end-radius: 20px;
   border-end-start-radius: 20px;
   font-weight: bold;
+}
+
+/* LISTADO INQUILINOS */
+
+.aviso-vencimiento{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(245, 113, 73);
+  align-items: baseline;
+ padding-top: 10px;
+}
+
+.texto-aviso{
+  padding: 0px 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.boton-cerrar-aviso{
+  border: 0;
+  background-color: transparent;
+  font-size: 20px;
+  padding: 0px 10px;
+  color: white;
 }
 
 /* INQUILINO DETAIL */
@@ -320,8 +365,8 @@ body {
 }
 
 /* Formulario inquilino*/
-.formulario{
-  border: 4px solid rgb(25,135,84);
+.formulario {
+  border: 4px solid rgb(25, 135, 84);
   padding: 30px 10px;
   border-radius: 20px;
   background-color: rgb(238, 237, 237);
@@ -357,7 +402,12 @@ body {
 }
 
 
-
+.formulario-editar{
+  box-shadow: 0px 0px 5px 1px rgb(105, 105, 105);
+  border-radius: 20px;
+  padding-top: 20px;
+  background-color: rgb(241, 241, 241);
+}
 
 .contenedor-fecha-label {
   display: flex;
@@ -365,7 +415,7 @@ body {
 }
 
 .input-fecha {
-  padding: 0px 10px;  
+  padding: 0px 10px;
 }
 
 .centro {
@@ -437,15 +487,43 @@ body {
 
 /* RECIBOS */
 
+.contenedor-filtro-botones-recibos {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+.contenedor-filtro {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
 .ancho-recibo {
   width: 90%;
   margin: 0 auto;
 }
 
+.boton-buscar-recibos {
+  border: 0;
+  padding: 0px 20px;
+  background-color: rgb(157, 165, 161);
+  height: 40px;
+  border-radius: 5px;
+
+}
+
+.boton-buscar-recibos img {
+  height: 20px;
+  padding: 0;
+}
 
 .recibo {
   border: 1px solid black;
-  padding: 40px;
+  padding: 10px 40px;
   border-radius: 20px;
   background-color: rgb(233, 233, 233);
 
@@ -454,23 +532,29 @@ body {
 .mostrar-recibo {
   min-width: 200px;
   max-width: 1000px;
-  border: solid 1px black;
-  margin:  auto;
+  box-shadow: 0px 0px 5px 1px rgb(105, 105, 105);
+  margin: auto;
   border-radius: 10px;
- 
+
+
 }
 
-.div-nombre{
-  background-color: rgb(25,135,84);
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
+.div-nombre {
+  background-color: rgb(25, 135, 84);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0px 10px;
 }
 
-.div-nombre p{
- 
+.div-nombre p {
+
   color: white;
   padding: 10px 5px;
-  
+
+}
+
+.contenido-recibo {
+  padding: 0px 10px;
 }
 
 
@@ -488,39 +572,48 @@ body {
 
 /* MEDIA QUERYS */
 
-@media(max-width:990px){
-   
-  .nav-desktop{
+@media(max-width:990px) {
+
+  .nav-desktop {
     display: none;
   }
 
-  .nav-mob{
+  .nav-mob {
     display: flex;
   }
 }
 
-@media(max-width:770px){
-   
-  .ancho{
+@media(max-width:770px) {
+
+  .ancho {
     width: 150px;
-    height: 250px;
+    height: 350px;
 
   }
-  .ancho img{
-     padding: 70px 0px;
+
+  .ancho img {
+    padding: 70px 0px;
   }
-  .fondo-nombre-inqui{
+
+
+  .fondo-nombre-inqui {
+    margin-top: 0;
+    padding-bottom: 30px;
+  }
+
+  .fondo-nombre {
+    padding-bottom: 30px;
     margin-top: 0;
   }
 }
 
-@media(max-width:440px){
- 
-  .nav-desktop{
+@media(max-width:440px) {
+
+  .nav-desktop {
     display: flex;
   }
 
-  .nav-mob{
+  .nav-mob {
     display: none;
   }
 }

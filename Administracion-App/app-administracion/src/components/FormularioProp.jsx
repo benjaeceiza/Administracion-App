@@ -12,6 +12,7 @@ const FormularioProp = () => {
     const [apellidoProp, setApellidoProp] = useState("");
     const [telefonoProp, setTelefonoPropo] = useState(0);
     const [emailProp, setEmailProp] = useState("");
+    const [genero, setGenero] = useState("");
     const [cuitProp, setCuitProp] = useState(0);
     const [cbuProp, setCbuProp] = useState("");
     const [error, setError] = useState(false)
@@ -21,19 +22,37 @@ const FormularioProp = () => {
     const [error5, setError5] = useState(false)
     const [error6, setError6] = useState(false)
     const formulario = useRef()
+    let propietario;
+    let numeroImagen = Math.floor((Math.random()*(30-1)+1));
 
     const crearPropietario = () => {
 
-        const propietario = {
-            nombre: nombreProp,
-            apellido: apellidoProp,
-            email: emailProp,
-            cuit: cuitProp,
-            cbu: cbuProp,
-            telefono: telefonoProp
+        if(genero == "Hombre"){
+
+             propietario = {
+                nombre: nombreProp.at(0).toUpperCase()+nombreProp.slice(1).toLowerCase(),
+                apellido: apellidoProp.at(0).toUpperCase()+apellidoProp.slice(1).toLowerCase(),
+                email: emailProp,
+                cuit: cuitProp,
+                cbu: cbuProp,
+                telefono: telefonoProp,
+                imagen: "/src/assets/avatars/hombre/hombre"+numeroImagen+".png",
+            }
+        }else{
+            if(genero == "Mujer"){
+                 propietario = {
+                    nombre: nombreProp.at(0).toUpperCase()+nombreProp.slice(1).toLowerCase(),
+                    apellido: apellidoProp.at(0).toUpperCase()+apellidoProp.slice(1).toLowerCase(),
+                    email: emailProp,
+                    cuit: cuitProp,
+                    cbu: cbuProp,
+                    telefono: telefonoProp,
+                    imagen: "/src/assets/avatars/mujer/mujer"+numeroImagen+".png",
+                }
+            }
         }
 
-
+      
         const db = getFirestore();
         const orderCollection = collection(db, "propietarios");
         addDoc(orderCollection, propietario).then(
@@ -81,7 +100,10 @@ const FormularioProp = () => {
     })
 
 
+  const cambioGenero = (e) =>{
 
+    setGenero(e.target.value)
+  }
 
 
     const control = () => {
@@ -161,6 +183,14 @@ const FormularioProp = () => {
                     <div className="mb-3">
                         <label className="label-datos">Apellido</label>
                         <input type="text" className={"form-control " + (error2 ? "validacion-error" : " ")} placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1" onInput={(e) => { setApellidoProp(e.target.value) }} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="label-datos">Género</label>
+                        <select className="form-select" aria-label="Default select example" onChange={cambioGenero}>
+                            <option value="">Seleccione el género</option>
+                            <option value= "Hombre">Hombre</option>
+                            <option value= "Mujer">Mujer</option>
+                        </select>
                     </div>
 
                     <div className="mb-3">
